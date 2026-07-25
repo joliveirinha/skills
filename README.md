@@ -19,6 +19,7 @@ next.
 | Category | What it's for | Guide |
 |----------|---------------|-------|
 | **management** | An operating system for engineering leaders: 1:1 logs, rolling person/team/org summaries, meeting prep, and upward reporting. | [`skills/management/README.md`](skills/management/README.md) |
+| **personal** | Personal-life skills. Starts with an expert, interactive travel planner. | [`skills/personal/README.md`](skills/personal/README.md) |
 
 _More categories will be added over time._
 

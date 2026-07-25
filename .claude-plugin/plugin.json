@@ -23,7 +23,8 @@
     "skills/management/prep/prep-ic-1-1/SKILL.md",
     "skills/management/prep/prep-em-1-1/SKILL.md",
     "skills/management/prep/prep-peer-1-1/SKILL.md",
-    "skills/management/prep/prep-boss-1-1/SKILL.md"
+    "skills/management/prep/prep-boss-1-1/SKILL.md",
+    "skills/personal/plan-trip/SKILL.md"
   ],
   "agents": [
     "skills/management/.agents/org-analyst.md"
