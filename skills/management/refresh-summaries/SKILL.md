@@ -1,6 +1,6 @@
 ---
 name: refresh-summaries
-description: Roll raw log entries up into rolling summaries at person, team, and org levels. Reads only entries newer than each summary's last_rolled_up marker, so it is cheap and idempotent. Called by log-1-1 for one person, and run weekly for teams and the org.
+description: Management — Roll raw log entries up into rolling summaries at person, team, and org levels. Reads only entries newer than each summary's last_rolled_up marker, so it is cheap and idempotent. Called by log-1-1 for one person, and run weekly for teams and the org.
 ---
 
 # refresh-summaries

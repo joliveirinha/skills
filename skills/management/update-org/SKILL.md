@@ -1,6 +1,6 @@
 ---
 name: update-org
-description: Apply an org change to the management data repo. Handles hires, departures, moving a person between teams (carrying their history), a whole team joining or leaving the org, and adding or retiring a peer / cross-org stakeholder. Keeps the roster, team, project, and stakeholder index files and profiles in sync.
+description: Management — Apply an org change to the management data repo. Handles hires, departures, moving a person between teams (carrying their history), a whole team joining or leaving the org, and adding or retiring a peer / cross-org stakeholder. Keeps the roster, team, project, and stakeholder index files and profiles in sync.
 disable-model-invocation: true
 ---
 

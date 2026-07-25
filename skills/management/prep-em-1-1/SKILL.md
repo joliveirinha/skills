@@ -1,6 +1,6 @@
 ---
 name: prep-em-1-1
-description: Prepare a briefing before a 1:1 with an engineering manager. Given the EM or their team, produces how the team is doing, how the EM is doing, team concerns, top achievements, top risks, and coaching or advice to offer. The primary visibility path for EM-led teams.
+description: Management — Prepare a briefing before a 1:1 with an engineering manager. Given the EM or their team, produces how the team is doing, how the EM is doing, team concerns, top achievements, top risks, and coaching or advice to offer. The primary visibility path for EM-led teams.
 disable-model-invocation: true
 ---
 

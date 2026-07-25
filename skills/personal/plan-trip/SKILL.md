@@ -1,6 +1,6 @@
 ---
 name: plan-trip
-description: Plan a vacation or family/friends trip as an expert travel planner. Interactively gathers who's going (ages, interests, constraints), theme, season, origin, duration, and budget, then proposes destinations, flights, lodging, and age-appropriate activities and iterates with you until the plan fits.
+description: Personal — Plan a vacation or family/friends trip as an expert travel planner. Interactively gathers who's going (ages, interests, constraints), theme, season, origin, duration, and budget, then proposes destinations, flights, lodging, and age-appropriate activities and iterates with you until the plan fits.
 disable-model-invocation: true
 ---
 

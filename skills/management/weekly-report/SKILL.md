@@ -1,6 +1,6 @@
 ---
 name: weekly-report
-description: Draft the leader's weekly upward report to their manager. Refreshes org roll-ups, pulls live signals, runs cross-org analysis, and produces a dated draft of successes, top risks, concerns, decisions needed, asks, and bidirectional feedback for the leader to edit.
+description: Management — Draft the leader's weekly upward report to their manager. Refreshes org roll-ups, pulls live signals, runs cross-org analysis, and produces a dated draft of successes, top risks, concerns, decisions needed, asks, and bidirectional feedback for the leader to edit.
 disable-model-invocation: true
 ---
 

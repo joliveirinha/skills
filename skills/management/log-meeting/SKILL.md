@@ -1,6 +1,6 @@
 ---
 name: log-meeting
-description: Record a team or project meeting the leader attended. Accepts raw notes or a full transcript, appends a dated entry to the team or project log, updates project status and risks, and flags new risks into team health. For meetings the leader actually attends.
+description: Management — Record a team or project meeting the leader attended. Accepts raw notes or a full transcript, appends a dated entry to the team or project log, updates project status and risks, and flags new risks into team health. For meetings the leader actually attends.
 disable-model-invocation: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: prep-ic-1-1
-description: Prepare a briefing before a 1:1 with an individual contributor. Given the IC's name, produces a current-work overview, likely concerns, feedback to give, unresolved follow-ups from last time, and a short list of questions to ask.
+description: Management — Prepare a briefing before a 1:1 with an individual contributor. Given the IC's name, produces a current-work overview, likely concerns, feedback to give, unresolved follow-ups from last time, and a short list of questions to ask.
 disable-model-invocation: true
 ---
 

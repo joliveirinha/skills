@@ -1,6 +1,6 @@
 ---
 name: scaffold-management-os
-description: Bootstrap or reconcile the private management data repo. Interviews the leader, pulls each team's ICs and EM from the service catalog, scaffolds the people/teams/projects tree with index files and mcp-map, and writes the data repo's own README. Re-runnable to detect and fix drift.
+description: Management — Bootstrap or reconcile the private management data repo. Interviews the leader, pulls each team's ICs and EM from the service catalog, scaffolds the people/teams/projects tree with index files and mcp-map, and writes the data repo's own README. Re-runnable to detect and fix drift.
 disable-model-invocation: true
 ---
 
