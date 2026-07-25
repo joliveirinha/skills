@@ -1,0 +1,31 @@
+{
+  "name": "management-os",
+  "version": "0.1.0",
+  "description": "A management operating system for engineering leaders: skills that maintain a private repo of 1:1 logs and rolling person/team/org summaries, prep meeting briefings, and draft upward reports.",
+  "author": "joliveirinha",
+  "license": "MIT",
+  "keywords": [
+    "management",
+    "engineering-leadership",
+    "1-1s",
+    "skills",
+    "reporting",
+    "productivity"
+  ],
+  "skills": [
+    "skills/management/setup/scaffold-management-os/SKILL.md",
+    "skills/management/setup/update-org/SKILL.md",
+    "skills/management/capture/log-1-1/SKILL.md",
+    "skills/management/capture/log-meeting/SKILL.md",
+    "skills/management/synthesis/refresh-summaries/SKILL.md",
+    "skills/management/synthesis/sync-signals/SKILL.md",
+    "skills/management/synthesis/weekly-report/SKILL.md",
+    "skills/management/prep/prep-ic-1-1/SKILL.md",
+    "skills/management/prep/prep-em-1-1/SKILL.md",
+    "skills/management/prep/prep-peer-1-1/SKILL.md",
+    "skills/management/prep/prep-boss-1-1/SKILL.md"
+  ],
+  "agents": [
+    "skills/management/.agents/org-analyst.md"
+  ]
+}

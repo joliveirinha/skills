@@ -1,0 +1,17 @@
+{
+  "name": "management-os",
+  "version": "0.1.0",
+  "description": "A management operating system for engineering leaders: skills that maintain a private repo of 1:1 logs and rolling person/team/org summaries, prep meeting briefings, and draft upward reports.",
+  "license": "MIT",
+  "keywords": [
+    "management",
+    "engineering-leadership",
+    "claude-code",
+    "skills"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills",
+    "README.md"
+  ]
+}
