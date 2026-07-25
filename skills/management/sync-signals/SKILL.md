@@ -1,6 +1,6 @@
 ---
 name: sync-signals
-description: Management — Pull live activity signals for a person, stakeholder, team, project, the org, or the special self and boss targets, from connected tools (issue tracker, code host, chat, wiki, incidents, on-call) into a short-lived cache for prep and reporting skills. Applies the required-vs-enrichment policy and degrades gracefully when a tool is absent.
+description: Pull live activity signals for a person, stakeholder, team, project, the org, or the special self and boss targets, from connected tools (issue tracker, code host, chat, wiki, incidents, on-call) into a short-lived cache for prep and reporting skills. Applies the required-vs-enrichment policy and degrades gracefully when a tool is absent.
 ---
 
 # sync-signals

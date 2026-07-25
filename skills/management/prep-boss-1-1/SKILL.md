@@ -1,6 +1,6 @@
 ---
 name: prep-boss-1-1
-description: Management — Prepare a briefing before a 1:1 with the leader's own manager. Produces org status, the leader's main concerns, feedback in both directions, how the leader can help their boss succeed, and how the boss can help the leader.
+description: Prepare a briefing before a 1:1 with the leader's own manager. Produces org status, the leader's main concerns, feedback in both directions, how the leader can help their boss succeed, and how the boss can help the leader.
 disable-model-invocation: true
 ---
 

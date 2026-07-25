@@ -1,6 +1,6 @@
 ---
 name: log-1-1
-description: Management — Record a 1:1, skip-level, ad-hoc, or peer / cross-org conversation with one person. Accepts raw notes or a full transcript, resolves the person via the roster or the stakeholders index, appends a dated raw entry, extracts action items and feedback, and refreshes that entity's rolling summary.
+description: Record a 1:1, skip-level, ad-hoc, or peer / cross-org conversation with one person. Accepts raw notes or a full transcript, resolves the person via the roster or the stakeholders index, appends a dated raw entry, extracts action items and feedback, and refreshes that entity's rolling summary.
 disable-model-invocation: true
 ---
 
