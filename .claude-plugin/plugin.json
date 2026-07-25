@@ -13,17 +13,17 @@
     "productivity"
   ],
   "skills": [
-    "skills/management/setup/scaffold-management-os/SKILL.md",
-    "skills/management/setup/update-org/SKILL.md",
-    "skills/management/capture/log-1-1/SKILL.md",
-    "skills/management/capture/log-meeting/SKILL.md",
-    "skills/management/synthesis/refresh-summaries/SKILL.md",
-    "skills/management/synthesis/sync-signals/SKILL.md",
-    "skills/management/synthesis/weekly-report/SKILL.md",
-    "skills/management/prep/prep-ic-1-1/SKILL.md",
-    "skills/management/prep/prep-em-1-1/SKILL.md",
-    "skills/management/prep/prep-peer-1-1/SKILL.md",
-    "skills/management/prep/prep-boss-1-1/SKILL.md",
+    "skills/management/scaffold-management-os/SKILL.md",
+    "skills/management/update-org/SKILL.md",
+    "skills/management/log-1-1/SKILL.md",
+    "skills/management/log-meeting/SKILL.md",
+    "skills/management/refresh-summaries/SKILL.md",
+    "skills/management/sync-signals/SKILL.md",
+    "skills/management/weekly-report/SKILL.md",
+    "skills/management/prep-ic-1-1/SKILL.md",
+    "skills/management/prep-em-1-1/SKILL.md",
+    "skills/management/prep-peer-1-1/SKILL.md",
+    "skills/management/prep-boss-1-1/SKILL.md",
     "skills/personal/plan-trip/SKILL.md"
   ],
   "agents": [
