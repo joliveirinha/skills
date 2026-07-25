@@ -1,4 +1,4 @@
-# skills
+# João Oliveirinha skills
 
 A personal collection of [Claude Code](https://claude.com/claude-code) skills, installable
 via [`npx skills`](https://skills.sh). Skills are grouped into **categories** under
