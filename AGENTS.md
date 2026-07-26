@@ -87,7 +87,7 @@ Key ideas that span skills:
   visibility comes through the EM's `log-1-1`. Stakeholders never roll into team/person summaries
   but surface cross-org risk at the org level (via the `org-analyst` agent).
 - **Tool-agnostic MCP model**: skills reference *capabilities* (`service-catalog`,
-  `issue-tracker`, `wiki`, `chat`, `code`), never products; the data repo's `mcp-map.md` binds
+  `issue-tracker`, `wiki`, `chat`, `code`), never products; the data repo's `settings.md` binds
   them. Some data is **required** (roster pull — block/ask if unavailable), most is
   **enrichment** (pull when available, degrade gracefully) — see `sync-signals`.
 - **`org-analyst` subagent (required)**: `weekly-report` and `prep-boss-1-1` delegate org-wide

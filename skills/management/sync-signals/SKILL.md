@@ -6,8 +6,13 @@ description: Pull live activity signals for a person, stakeholder, team, project
 # sync-signals
 
 A helper for prep and reporting skills. Given an entity, gather current external signals so a
-briefing reflects reality, not just what was said in the last 1:1. Read `mcp-map.md` in the data
-repo to learn which capability maps to which MCP tool and which are `known-to-exist`.
+briefing reflects reality, not just what was said in the last 1:1.
+
+Read this file only if it isn't already in your context window:
+- `settings.md` — capability → MCP tool map and `known-to-exist` flags
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Input
 An entity: a person (slug), a **stakeholder** (slug), a team (slug), a project (slug), `org`, or
@@ -33,7 +38,7 @@ caller reads, not a permanent record). Summarize; don't dump raw payloads.
 ## Required-vs-enrichment policy
 Signals here are **enrichment** — a prep or report should still work without them. But:
 
-- If a capability is **mapped and `known-to-exist`** in `mcp-map.md`, do **not** silently skip
+- If a capability is **mapped and `known-to-exist`** in `settings.md`, do **not** silently skip
   it — pull it. In particular, if the caller flags that a **recently discussed topic needs more
   context**, actively fetch from the relevant tool rather than relying on memory.
 - If a capability is genuinely **absent/unmapped**, skip it cleanly and record in the cache that

@@ -1,6 +1,6 @@
 ---
 name: setup-management-os
-description: Bootstrap or reconcile the private management data repo. Interviews the leader, pulls each team's ICs and EM from the service catalog, scaffolds the people/teams/projects tree with index files and mcp-map, seeds this repo's own reference docs and AGENTS.md/CLAUDE.md section, installs the org-analyst subagent, and writes the data repo's own README. Re-runnable to detect and fix drift.
+description: Bootstrap or reconcile the private management data repo. Interviews the leader, pulls each team's ICs and EM from the service catalog, scaffolds the people/teams/projects tree with index files and settings, seeds this repo's own reference docs and AGENTS.md/CLAUDE.md section, installs the org-analyst subagent, and writes the data repo's own README. Re-runnable to detect and fix drift.
 disable-model-invocation: true
 ---
 
@@ -15,7 +15,7 @@ files, so every file matches the expected shape.
 
 ## Step 1 — Detect current state
 
-Check for `org.md`, `people/_index.md`, `teams/_index.md`, `projects/_index.md`, `mcp-map.md`,
+Check for `org.md`, `people/_index.md`, `teams/_index.md`, `projects/_index.md`, `settings.md`,
 `docs/agents/architecture.md`, `docs/agents/conventions.md`, an `## Management OS` section in
 whichever of `AGENTS.md`/`CLAUDE.md` exists, and whether the `org-analyst` subagent is installed
 (check for `agents/org-analyst.md` under `.claude/`, `~/.claude/`, `.opencode/`, and
@@ -31,11 +31,12 @@ whichever of `AGENTS.md`/`CLAUDE.md` exists, and whether the `org-analyst` subag
   section, and the subagent file are safe to refresh freely since they're generated, not user data.
   End with an "already conformant" note if nothing needed changing.
 
-## Step 2 — Map the tools (mcp-map.md)
+## Step 2 — Write settings.md (tools)
 
 Ask which capabilities are available and which MCP tool backs each: `service-catalog`,
-`issue-tracker`, `wiki`, `chat`, `code`. Write `mcp-map.md` per `./doc/conventions.md`, setting
-`known-to-exist` for each. This file is how every other skill stays vendor-agnostic.
+`issue-tracker`, `wiki`, `chat`, `code`. Write `settings.md` per `./doc/conventions.md`, setting
+`known-to-exist` for each capability. This file is how every other skill stays vendor-agnostic,
+and the one place per-repo operational preferences live.
 
 ## Step 3 — Interview for structure
 

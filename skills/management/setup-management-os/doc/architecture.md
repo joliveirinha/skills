@@ -106,6 +106,6 @@ and `prep-boss-1-1`, where cross-org relationships are often the most relevant t
 ## Capabilities, not products
 
 Skills reference capability names only: `service-catalog`, `issue-tracker`, `wiki`, `chat`,
-`code`. `mcp-map.md` maps each capability to the actual MCP tool available in your environment,
+`code`. `settings.md` maps each capability to the actual MCP tool available in your environment,
 and remembers which capabilities are known to exist across sessions. See `sync-signals` and
 `conventions.md` for the required-vs-enrichment policy.

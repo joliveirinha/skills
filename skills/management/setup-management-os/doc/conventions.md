@@ -8,7 +8,7 @@ formats below. Skills read and write to these shapes; keep them stable.
 The overriding principle for every skill: **don't guess.** When a skill can't determine something
 it needs — who someone is, their role, which project a topic belongs to, who was in a meeting,
 anything — it first resolves what it can from the data (the index files below) and available tools
-(per `mcp-map.md`), and otherwise **asks the leader** rather than silently proceeding on an inferred
+(per `settings.md`), and otherwise **asks the leader** rather than silently proceeding on an inferred
 value. When it surfaces a new person or project that matters, it offers to add it (a report via
 `update-org`, a peer as a stakeholder, a project row) rather than leaving it floating. This applies
 everywhere; the individual skills don't restate it case by case.
@@ -183,7 +183,11 @@ who was in the room and their role — so the meeting's context is materialized 
 
 Resolve unknown attendees/roles per the **Never assume — ask** principle above.
 
-## mcp-map.md
+## settings.md
+
+The data repo's operational settings — capability bindings plus small per-repo preferences. This
+is the home for settings like this one; add future preferences (a digest length, an archived-teams
+list, etc.) here rather than bolting them onto whichever file happens to be open.
 
 ```markdown
 # Capability → MCP map
@@ -195,10 +199,6 @@ Resolve unknown attendees/roles per the **Never assume — ask** principle above
 | wiki | <tool name> | no | not connected yet |
 | chat | <tool name> | yes | |
 | code | <tool name> | yes | |
-
-## Cadence
-- person roll-up: after each log-1-1
-- team/org roll-up: weekly (or before weekly-report)
 ```
 
 `known-to-exist: yes` means a skill should *not* silently skip that capability when a topic

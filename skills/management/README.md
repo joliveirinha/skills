@@ -14,7 +14,7 @@ director writing to a VP.
 
 The skills are **tool-agnostic**. They talk about *capabilities* — a service catalog, an
 issue tracker, a wiki, a chat system, a code host — never a specific product. Which real
-tool (MCP server) backs each capability is recorded once in your data repo's `mcp-map.md`.
+tool (MCP server) backs each capability is recorded once in your data repo's `settings.md`.
 
 ## Two repos: keep your data separate
 
