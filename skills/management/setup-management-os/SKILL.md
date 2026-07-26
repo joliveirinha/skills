@@ -88,12 +88,27 @@ Create, per `./doc/conventions.md`:
 ## Step 6 — Write the data repo's README
 
 Write `README.md` **in the data repo** describing the operating rhythm and a readable table of
-the available skills (mirror the table in this package's README, adapted to what's installed).
-This is the leader's at-a-glance guide. Include:
+the available skills. This is the leader's at-a-glance guide. Include:
 - The capture → synthesis → prep flow.
 - When to run each skill (after 1:1s, after meetings, weekly, on reorg).
 - The meeting-scope model, if the leader manages EMs (directly-managed vs em-led — see
   `./doc/architecture.md`); for a manager of ICs, note the single-team shape instead.
+- A skills table, adapted to what's actually installed (check the installed skills directory —
+  don't assume every row below is present):
+
+  | Skill | Invoke with | Use it… |
+  |---|---|---|
+  | **setup-management-os** | `/setup-management-os` | Once to bootstrap the repo; re-run anytime to reconcile drift. Writes your data repo's own README. |
+  | **update-org** | `/update-org` | For reorg events: hires, departures, moving a person between teams, a team joining or leaving your org, adding/retiring a peer stakeholder. |
+  | **log-1-1** | `/log-1-1` | After any 1:1, skip-level (if you manage managers), ad-hoc, or **peer meeting** — paste notes or a transcript. |
+  | **log-meeting** | `/log-meeting` | After a team/project meeting you attended — paste notes or a transcript. |
+  | **refresh-summaries** | `/refresh-summaries` | To roll up person → team → org summaries (usually chained automatically). |
+  | **sync-signals** | (automatic) | Helper that pulls live activity from your connected tools. |
+  | **weekly-report** | `/weekly-report` | Weekly, to draft your upward report. |
+  | **prep-ic-1-1** | `/prep-ic-1-1 <name>` | Before a 1:1 with an IC. |
+  | **prep-em-1-1** | `/prep-em-1-1 <em-or-team>` | Before a 1:1 with an engineering manager (if you manage EMs). |
+  | **prep-peer-1-1** | `/prep-peer-1-1 <name>` | Before a meeting with a peer / cross-org stakeholder. |
+  | **prep-boss-1-1** | `/prep-boss-1-1` | Before a 1:1 with your manager. |
 
 ## Step 7 — Seed the reference docs
 

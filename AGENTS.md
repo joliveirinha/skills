@@ -94,6 +94,11 @@ Key ideas that span skills:
   synthesis to it directly — `setup-management-os` guarantees it's installed, so these skills
   don't carry an inline fallback.
 
+**Keep the skills table in sync in two places.** `skills/management/README.md`'s table is for
+humans browsing this repo; `setup-management-os/SKILL.md`'s Step 6 carries its own copy because
+the installed skill can't read the category README (same reason as the docs above — only its own
+folder gets installed). When you add, rename, or remove a management skill, update both.
+
 ## Subagents
 
 `npx skills` installs skills only — never subagents — so a skill that needs one has to install it
