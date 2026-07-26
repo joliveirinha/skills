@@ -6,8 +6,14 @@ disable-model-invocation: true
 
 # log-meeting
 
-Capture a meeting into the right team or project log. Read `skills/management/doc/conventions.md` for shapes and
-`skills/management/doc/architecture.md` for the meeting-scope model.
+Capture a meeting into the right team or project log.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — entry shapes
+- `docs/agents/architecture.md` — the meeting-scope model
+
+If either is missing, stop, tell the user, and suggest running `/setup-management-os` — don't run
+it yourself.
 
 ## Scope — which meetings belong here
 - Meetings of **directly-managed teams** the leader attends: eng syncs, retros, standups,

@@ -6,8 +6,8 @@ Guidance for AI agents working in this repository. (`CLAUDE.md` points here.)
 
 A collection of **Claude Code skills**, published for installation via
 [`npx skills`](https://skills.sh) (the `vercel-labs/skills` CLI). There is **no build,
-lint, or test step** — the deliverable is Markdown: `SKILL.md` files plus a manifest.
-"Testing" means confirming the CLI discovers and lists the skills correctly.
+lint, or test step** — the deliverable is Markdown: `SKILL.md` files. "Testing" means
+confirming the CLI discovers and lists the skills correctly.
 
 ## Commands
 
@@ -36,40 +36,47 @@ skills/<category>/<skill>/SKILL.md      # the required "catalog" layout
 ```
 
 The CLI walks `skills/` only **two levels deep** — flat `skills/<name>/SKILL.md` or catalog
-`skills/<category>/<name>/SKILL.md`. **Anything nested deeper is silently NOT discovered.**
-This repo previously grouped management skills under `skills/management/<group>/<skill>/`
-(depth 3) and the CLI found none of them — do not reintroduce intermediate group folders.
-Keep every skill at exactly `skills/<category>/<skill>/`.
+`skills/<category>/<name>/SKILL.md`. **Anything nested deeper is silently NOT discovered**, and
+the CLI **only ever copies the contents of one skill's own folder** — it has no mechanism to pull
+in files that live outside that folder. So a file meant to ship needs to live inside the one
+`<skill>/` folder that needs it; nothing at `skills/<category>/` (as a sibling of the skill
+folders) ever gets installed.
 
 Categories today: `management` (engineering-leadership toolkit) and `personal` (currently one
-travel-planning skill). Each category is **self-contained**: its own `README.md`, and for
-`management` also `doc/`, `design/`, and `.agents/`.
+travel-planning skill). Each category is **self-contained**: its own `README.md`, and every skill
+sits at exactly `skills/<category>/<skill>/`. If a category needs to distribute shared reference
+docs or a subagent alongside its skills, those live bundled inside whichever skill sets the
+category up (see `skills/management/setup-management-os/{doc/,agents/}`), not as category-level
+siblings — see that skill for the pattern.
 
 ### Listing has no category headers
-`npx skills --list` shows a flat list; it does **not** render category/folder headers. The only
-grouping the CLI does is "declared in a manifest (under the plugin name)" vs an undeclared
-**"General"** bucket. Folder names are invisible in the CLI output (they only show in GitHub's
-file browser). Don't spend effort trying to make categories appear as headers — it isn't a
-supported feature here.
+`npx skills --list` shows a flat list; it does **not** render category/folder headers. Folder
+names are invisible in the CLI output (they only show in GitHub's file browser). Don't spend
+effort trying to make categories appear as headers — it isn't a supported feature here.
 
-## Skill & manifest conventions
+## Skill conventions
 
 - **Frontmatter** (`SKILL.md`): `name` (must match the folder), `description` (front-loaded —
   lead with the action word), and `disable-model-invocation: true` for user-invoked skills
   (everything here except `refresh-summaries` and `sync-signals`, which other skills chain to).
-- **Manifest**: `.claude-plugin/plugin.json` enumerates every skill path and the agent. When you
-  add, rename, or move a skill, update this array — and re-run the local `--list`.
-- **Cross-references** inside skills use the **skill name** (e.g. "invoke `refresh-summaries`"),
-  never a file path. References to shared docs use **repo-root-relative** paths
-  (e.g. `skills/management/doc/conventions.md`).
+- **Cross-references** between skills use the **skill name** (e.g. "invoke `refresh-summaries`"),
+  never a file path. **A skill's own bundled files** (siblings inside its own folder) are
+  referenced relative to it (e.g. `setup-management-os/SKILL.md` reads `./doc/architecture.md`) —
+  that resolves correctly no matter where the skill ends up installed. **Docs a skill expects to
+  find in the user's own project** (seeded there by a setup skill, not shipped as part of this
+  repo) are referenced by their path in that project (e.g. `docs/agents/conventions.md`) — never
+  by a path back into this repo, which won't exist once installed.
 
 ## The `management` category — the part that needs multiple files to understand
 
 `management` is a "management operating system" for an engineering leader. Its skills do **not**
 operate on this repo — they read/write a **separate, private data repo** the user installs them
-into. Before changing these skills, read `skills/management/doc/architecture.md` (data model +
-roll-up flow) and `skills/management/doc/conventions.md` (exact file/frontmatter shapes). Key
-ideas that span skills:
+into, bootstrapped by `/setup-management-os`. Before changing these skills, read
+`skills/management/setup-management-os/doc/architecture.md` (data model + roll-up flow) and
+`skills/management/setup-management-os/doc/conventions.md` (exact file/frontmatter shapes) — the
+canonical source for both; `setup-management-os` seeds copies of them into the data repo at
+`docs/agents/architecture.md` / `conventions.md`, which is what the other skills read at runtime.
+Key ideas that span skills:
 
 - **Entities**: `people/` (reports), `teams/`, `projects/`, `stakeholders/` (peers/cross-org).
   Each entity has an append-only raw `log/` plus a rolling `summary.md`.
@@ -83,24 +90,23 @@ ideas that span skills:
   `issue-tracker`, `wiki`, `chat`, `code`), never products; the data repo's `mcp-map.md` binds
   them. Some data is **required** (roster pull — block/ask if unavailable), most is
   **enrichment** (pull when available, degrade gracefully) — see `sync-signals`.
-- **`org-analyst` subagent (optional)**: `weekly-report` and `prep-boss-1-1` delegate cross-org
-  synthesis to it *if present*, else analyze inline (same output, more main-context use). When
-  editing those two skills, preserve the "if available … otherwise inline" phrasing.
+- **`org-analyst` subagent (required)**: `weekly-report` and `prep-boss-1-1` delegate cross-org
+  synthesis to it directly — `setup-management-os` guarantees it's installed, so these skills
+  don't carry an inline fallback.
 
-## Subagents & `install.sh`
-`npx skills` installs skills only — never subagents. `install.sh` covers that gap. How it works
-(keep these invariants when extending it):
-- **Agents live at `skills/<category>/.agents/<name>.md`** in Claude Code format (`name`,
-  `description`, `tools`). `install.sh` **discovers** them by globbing `skills/*/.agents/*.md` — add
-  a new agent by dropping a file there; no script edits needed.
-- **Source ≠ destination.** The script reads agents from its own clone (`SCRIPT_DIR`) and installs
-  into a separate destination: `--global`, `--target <dir>`, or the current directory; it **refuses**
-  if the destination resolves to the clone itself.
-- **Per-tool translation.** Claude Code gets the file verbatim; OpenCode gets a generated file
-  (`mode: subagent` + a `tools:` map translated from the `tools:` CSV) — so agents needing write
-  tools translate correctly, not just read-only ones.
-- **Selection**: `--list`, `--agent <name>` (repeatable), `--all`, or an interactive picker. Must be
-  bash 3.2-safe (macOS) — no associative arrays.
+## Subagents
+
+`npx skills` installs skills only — never subagents — so a skill that needs one has to install it
+itself when it runs, using ordinary Read/Write/Bash (no separate script or install step). The
+`management` category's `org-analyst` is the current example:
+`skills/management/setup-management-os/agents/org-analyst.md` is bundled inside the
+`setup-management-os` skill folder (so `npx skills` actually installs it), and that skill's own
+`SKILL.md` states where to copy it — Claude Code gets the file verbatim into `<dest>/agents/`;
+OpenCode gets a translated copy (`mode: subagent` + a `tools:` map derived from the source
+`tools:` CSV). It always asks the user which tool(s) to install for rather than assuming. A future
+category that needs a subagent should follow the same pattern: bundle it inside that category's
+own setup skill, don't add a category-level `.agents/` sibling folder (see the discovery rule
+above for why that wouldn't get installed).
 
 ## Git
 

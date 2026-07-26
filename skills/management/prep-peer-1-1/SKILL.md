@@ -7,8 +7,13 @@ disable-model-invocation: true
 # prep-peer-1-1
 
 Prep a cross-org working meeting. This is a **collaborative, peer-level** conversation — about
-the relationship and shared work, not performance or coaching. Read
-`skills/management/doc/conventions.md` for file shapes.
+the relationship and shared work, not performance or coaching.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — file shapes
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Input
 The **peer's name** (resolve to a slug via `stakeholders/_index.md`; if unknown, offer to add

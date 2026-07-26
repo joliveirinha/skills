@@ -7,9 +7,14 @@ disable-model-invocation: true
 # prep-boss-1-1
 
 Prep the upward 1:1 — a two-way conversation, not just a status readout. Read `org.md` (which holds
-the `## Roles` block, the boss's profile and goals) and `skills/management/doc/conventions.md`
-(including the **Altitude & span calibration** note). Pitch the briefing at the **boss's** altitude
+the `## Roles` block, the boss's profile and goals). Pitch the briefing at the **boss's** altitude
 from `## Roles`.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — including the **Altitude & span calibration** note
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Steps
 
@@ -24,11 +29,9 @@ from `## Roles`.
    `org.md`) to see what the leader has been working on recently (wiki pages, notable chat) and
    what the boss is currently focused on. This is the raw material for finding overlap.
 
-4. **Analyze.** If an `org-analyst` subagent is available, delegate the cross-org read to it;
-   otherwise do it inline. Produce a ranked read — achievements, risks, concerns, cross-cutting
-   patterns, cross-org dependencies (from stakeholders), and questions the boss may ask. (The
-   subagent isn't installed by plain `npx skills` — see the category README; inline yields the
-   same result, using more of the main context.)
+4. **Analyze.** Delegate the cross-org read to the `org-analyst` subagent. Produce a ranked read —
+   achievements, risks, concerns, cross-cutting patterns, cross-org dependencies (from
+   stakeholders), and questions the boss may ask.
 
 5. **Produce the briefing** (save to `prep/boss-YYYY-MM-DD.md` and show it):
    - **How my org is doing** — the honest current state at the boss's altitude: outcomes,

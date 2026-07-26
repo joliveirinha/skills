@@ -8,9 +8,14 @@ disable-model-invocation: true
 
 Produce a review-ready draft of the leader's upward report to their manager. It gathers,
 synthesizes, and drafts — the leader edits and sends. Read `org.md` (including the `## Roles` block
-and the **Altitude & span calibration** note), the team summaries, and
-`skills/management/doc/conventions.md`. Pitch the whole report at the **boss's** altitude from
-`## Roles`, scaled to the level gap.
+and the **Altitude & span calibration** note) and the team summaries. Pitch the whole report at
+the **boss's** altitude from `## Roles`, scaled to the level gap.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md`
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Steps
 
@@ -20,13 +25,11 @@ and the **Altitude & span calibration** note), the team summaries, and
 2. **Pull signals.** Run `sync-signals org` (and per-team as useful) to catch activity not yet
    in any summary — shipped work, incidents, slipping items.
 
-3. **Analyze across the org.** If an `org-analyst` subagent is available, delegate the cross-org
-   synthesis to it; otherwise do the same analysis inline. Either way, read `org.md`,
-   `teams/*/summary.md`, `teams/*/health.md`, `projects/*.md`, `stakeholders/*/summary.md`, and
-   the signals cache, and produce ranked achievements, risks, concerns, cross-cutting patterns,
-   **cross-org dependencies/friction from stakeholders**, and the questions the leader should be
-   ready for. (The subagent isn't installed by plain `npx skills` — see the category README; the
-   inline path yields the same result, just using more of the main context.)
+3. **Analyze across the org.** Delegate the cross-org synthesis to the `org-analyst` subagent,
+   pointing it at `org.md`, `teams/*/summary.md`, `teams/*/health.md`, `projects/*.md`,
+   `stakeholders/*/summary.md`, and the signals cache. It should produce ranked achievements,
+   risks, concerns, cross-cutting patterns, **cross-org dependencies/friction from stakeholders**,
+   and the questions the leader should be ready for.
 
 4. **Draft the report** to `reports/upward/YYYY-MM-DD.md` with these sections:
    - **Successes** — 3–5 concrete wins, each tied to a team/person/project and its impact.

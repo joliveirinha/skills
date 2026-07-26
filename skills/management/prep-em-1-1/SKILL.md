@@ -8,7 +8,12 @@ disable-model-invocation: true
 
 Prep an EM 1:1 that covers both the team and the manager. For EM-led teams this 1:1 is the
 leader's main window into the team, so treat it as both a status and a coaching conversation.
-Read `skills/management/doc/architecture.md` (meeting-scope model) and `skills/management/doc/conventions.md`.
+Read these files only if they aren't already in your context window:
+- `docs/agents/architecture.md` — meeting-scope model
+- `docs/agents/conventions.md`
+
+If either is missing, stop, tell the user, and suggest running `/setup-management-os` — don't run
+it yourself.
 
 > **Applies only when the leader manages EMs** (span from the `## Roles` block in `org.md` — see
 > **Management span** in `architecture.md`). A manager of ICs has no EMs; use `prep-ic-1-1` instead.

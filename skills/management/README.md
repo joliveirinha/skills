@@ -28,7 +28,7 @@ this package  (shareable, npx-installable)   ──installed into──▶   you
 > [!WARNING]
 > Your management repo contains sensitive personnel data — performance notes, concerns,
 > promotion/comp context. Keep it a **private** repository, never commit it into this
-> package, and treat it accordingly. The `scaffold-management-os` skill sets up a strong
+> package, and treat it accordingly. The `setup-management-os` skill sets up a strong
 > `.gitignore` posture for you.
 
 ## Install
@@ -37,21 +37,21 @@ From the repo root, `npx skills@latest add joliveirinha/skills`. Then, inside yo
 management repo**, bootstrap the structure:
 
 ```
-/scaffold-management-os
+/setup-management-os
 ```
 
-> **On the `org-analyst` subagent:** `weekly-report` and `prep-boss-1-1` can delegate their
-> cross-org analysis to an `org-analyst` subagent, which keeps the main context lean on large
-> orgs. Plain `npx skills` does **not** install subagents — the skills fall back to doing the
-> analysis inline (same result, more context used). To install it, run `install.sh` from your
-> local clone into your project or globally, e.g.
-> `./install.sh --global --agent org-analyst` (see the root README for all options).
+This one skill does everything: scaffolds the `people`/`teams`/`projects` tree, seeds this
+category's reference docs into your repo at `docs/agents/architecture.md` and `conventions.md`,
+adds a `## Management OS` section to whichever of your `AGENTS.md`/`CLAUDE.md` already exists, and
+installs the `org-analyst` subagent (asking which of Claude Code / OpenCode to install it for) —
+`weekly-report` and `prep-boss-1-1` depend on it, so it isn't optional. It's safe to re-run any
+time; it detects drift and asks before fixing anything.
 
 ## The skills
 
 | Skill | Invoke with | Use it… |
 |---|---|---|
-| **scaffold-management-os** | `/scaffold-management-os` | Once to bootstrap the repo; re-run anytime to reconcile drift. Writes your data repo's own README. |
+| **setup-management-os** | `/setup-management-os` | Once to bootstrap the repo; re-run anytime to reconcile drift. Writes your data repo's own README. |
 | **update-org** | `/update-org` | For reorg events: hires, departures, moving a person between teams, a team joining or leaving your org, adding/retiring a peer stakeholder. |
 | **log-1-1** | `/log-1-1` | After any 1:1, skip-level (if you manage managers), ad-hoc, or **peer meeting** — paste notes or a transcript. |
 | **log-meeting** | `/log-meeting` | After a team/project meeting you attended — paste notes or a transcript. |
@@ -72,6 +72,7 @@ management repo**, bootstrap the structure:
 - **Prep** (`prep-*`) reads the summaries (plus live signals) to produce a briefing tailored
   to the audience — IC, EM, peer, or your own manager.
 
-See [`doc/architecture.md`](doc/architecture.md) for the data model and roll-up flow,
-[`doc/conventions.md`](doc/conventions.md) for file/entry formats, and
-[`design/scheduling.md`](design/scheduling.md) for the (not-yet-built) automation design.
+See [`setup-management-os/doc/architecture.md`](setup-management-os/doc/architecture.md) for the
+data model and roll-up flow, [`setup-management-os/doc/conventions.md`](setup-management-os/doc/conventions.md)
+for file/entry formats, and [`/docs/specs/management/scheduling.md`](/docs/specs/management/scheduling.md)
+for the (not-yet-built) automation design.

@@ -6,8 +6,14 @@ description: Roll raw log entries up into rolling summaries at person, team, and
 # refresh-summaries
 
 Rebuild the *current picture* from the raw log, bottom-up. Idempotent: each `summary.md` carries
-`last_rolled_up`, and this skill reads only entries dated after it. Read `skills/management/doc/conventions.md`
-and `skills/management/doc/architecture.md` first.
+`last_rolled_up`, and this skill reads only entries dated after it.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md`
+- `docs/agents/architecture.md`
+
+If either is missing, stop, tell the user, and suggest running `/setup-management-os` — don't run
+it yourself.
 
 ## Target
 Accept a target: a **person**, a **stakeholder**, a **team**, `org`, or `all`. Default to `all`

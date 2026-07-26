@@ -2,33 +2,22 @@
 
 A personal collection of [Claude Code](https://claude.com/claude-code) skills, installable
 via [`npx skills`](https://skills.sh). Skills are grouped into **categories** under
-`skills/<category>/`, and each category is self-contained — it ships its own README, docs,
-and any agents it needs.
+`skills/<category>/`, and each category is self-contained — it ships its own README and any
+skills it needs.
 
 ## Install
 
-**Skills** — run from the project you want them in (works for this private repo via your SSH access):
+Run from the project you want them in (works for this private repo via your SSH access):
 
 ```bash
 npx skills@latest add joliveirinha/skills
 ```
 
-This adds the skills into your current project. See each category's README for what to run next.
-
-**Subagents** — `npx skills` does **not** install subagents (e.g. `org-analyst`, used by
-`weekly-report` and `prep-boss-1-1`). They're optional — the skills fall back to analyzing inline —
-but to install them, use `install.sh` from your local clone. It reads the agent files from the clone
-and installs them into a **separate destination** (never the clone itself), translating each agent to
-Claude Code and/or OpenCode format for whichever tools you have:
-
-```bash
-./install.sh --list                       # see available subagents
-./install.sh --global --all               # install all, user-level (~/.claude, ~/.config/opencode)
-./install.sh --target ~/my-project --agent org-analyst   # into a specific project
-cd ~/my-project && /path/to/install.sh --agent org-analyst   # into the current project
-```
-
-Add `--with-skills` to also run the `npx skills` step in the same command.
+This adds the skills into your current project. Each category's `SKILL.md` files are plain
+Markdown — `npx skills` installs each one's own folder verbatim and nothing else, so any setup
+a category needs beyond that (subagents, seeded reference docs) is handled by that category's own
+setup skill, not by this install step. See each category's README for what to run next — for
+`management`, that's `/setup-management-os`.
 
 ## Categories
 
@@ -42,18 +31,18 @@ _More categories will be added over time._
 ## Repository layout
 
 ```
-.claude-plugin/plugin.json   # package manifest: enumerates every skill + agent (drives npx skills)
-package.json                 # package metadata
-README.md                    # this file — the category index
+README.md                     # this file — the category index
+docs/specs/<category>/        # planning/design docs for evolving this repo — not shipped to users
 skills/
   <category>/
-    README.md                # category guide
-    doc/                     # category reference docs
-    design/                  # forward-looking designs
-    .agents/                 # subagents this category's skills delegate to
-    <group>/<skill>/SKILL.md # the skills themselves
+    README.md                 # category guide
+    <skill>/SKILL.md          # the skills themselves — npx skills installs each folder verbatim
 ```
 
 Each skill is a `SKILL.md` with `name` / `description` frontmatter (plus
-`disable-model-invocation: true` for skills meant to be invoked explicitly). The
-`.claude-plugin/plugin.json` manifest lists every skill and agent path in the repo.
+`disable-model-invocation: true` for skills meant to be invoked explicitly). `npx skills` only ever
+installs the contents of one skill's own folder — it has no way to pull in files that live outside
+it. So if a category needs shared reference docs or a subagent distributed alongside its skills,
+those live bundled *inside* whichever skill is responsible for setting the category up (see
+`skills/management/setup-management-os/` for the pattern: `doc/` and `agents/` bundled inside the
+one skill, seeded into the user's own project when that skill runs).

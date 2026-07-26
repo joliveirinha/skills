@@ -6,7 +6,13 @@ disable-model-invocation: true
 
 # prep-ic-1-1
 
-Walk into an IC 1:1 already oriented. Read `skills/management/doc/conventions.md` for file shapes.
+Walk into an IC 1:1 already oriented.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — file shapes
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Input
 The **IC's name** (resolve to a slug via `people/_index.md`; ask if ambiguous).

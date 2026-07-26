@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(journalctl *)",
+      "Bash(chezmoi diff *)",
+      "Bash(chezmoi status *)",
+      "Bash(command -v *)",
+      "Bash(herdr tab list*)",
+      "Bash(chezmoi cat *)",
+      "Bash(dmesg *)"
+    ]
+  }
+}

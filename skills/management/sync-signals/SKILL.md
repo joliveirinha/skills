@@ -40,7 +40,7 @@ Signals here are **enrichment** — a prep or report should still work without t
   it was unavailable, so the caller can note the gap rather than assume "all quiet".
 - Never fabricate a signal. Absence of data is a real, reportable state.
 
-(Contrast: roster data in `scaffold-management-os` / `update-org` is *required-for-correctness*
+(Contrast: roster data in `setup-management-os` / `update-org` is *required-for-correctness*
 — there, a missing service-catalog tool blocks and asks the user. Here, missing tools degrade.)
 
 ## Finish

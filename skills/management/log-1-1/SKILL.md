@@ -6,8 +6,13 @@ disable-model-invocation: true
 
 # log-1-1
 
-Turn the notes from one conversation into a durable log entry plus an updated summary. Read
-`skills/management/doc/conventions.md` for the entry and summary shapes.
+Turn the notes from one conversation into a durable log entry plus an updated summary.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — entry and summary shapes
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 ## Inputs
 - **Who** — the person's name (resolve via `people/_index.md` **or** `stakeholders/_index.md`;

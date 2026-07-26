@@ -7,7 +7,13 @@ disable-model-invocation: true
 # update-org
 
 Incremental, reorg-aware maintenance of the data repo. For first-time setup or a full
-reconcile, use `scaffold-management-os` instead. Read `skills/management/doc/conventions.md` for file shapes.
+reconcile, use `setup-management-os` instead.
+
+Read these files only if they aren't already in your context window:
+- `docs/agents/conventions.md` — file shapes
+
+If it's missing, stop, tell the user, and suggest running `/setup-management-os` — don't run it
+yourself.
 
 Ask which change is happening (or infer it from what the leader says), then apply the matching
 flow. Always update **both** `people/_index.md` and `teams/_index.md` where relevant, and never
