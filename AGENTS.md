@@ -83,6 +83,24 @@ ideas that span skills:
   `issue-tracker`, `wiki`, `chat`, `code`), never products; the data repo's `mcp-map.md` binds
   them. Some data is **required** (roster pull — block/ask if unavailable), most is
   **enrichment** (pull when available, degrade gracefully) — see `sync-signals`.
+- **`org-analyst` subagent (optional)**: `weekly-report` and `prep-boss-1-1` delegate cross-org
+  synthesis to it *if present*, else analyze inline (same output, more main-context use). When
+  editing those two skills, preserve the "if available … otherwise inline" phrasing.
+
+## Subagents & `install.sh`
+`npx skills` installs skills only — never subagents. `install.sh` covers that gap. How it works
+(keep these invariants when extending it):
+- **Agents live at `skills/<category>/.agents/<name>.md`** in Claude Code format (`name`,
+  `description`, `tools`). `install.sh` **discovers** them by globbing `skills/*/.agents/*.md` — add
+  a new agent by dropping a file there; no script edits needed.
+- **Source ≠ destination.** The script reads agents from its own clone (`SCRIPT_DIR`) and installs
+  into a separate destination: `--global`, `--target <dir>`, or the current directory; it **refuses**
+  if the destination resolves to the clone itself.
+- **Per-tool translation.** Claude Code gets the file verbatim; OpenCode gets a generated file
+  (`mode: subagent` + a `tools:` map translated from the `tools:` CSV) — so agents needing write
+  tools translate correctly, not just read-only ones.
+- **Selection**: `--list`, `--agent <name>` (repeatable), `--all`, or an interactive picker. Must be
+  bash 3.2-safe (macOS) — no associative arrays.
 
 ## Git
 

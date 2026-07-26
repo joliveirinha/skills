@@ -34,6 +34,13 @@ management repo**, bootstrap the structure:
 /scaffold-management-os
 ```
 
+> **On the `org-analyst` subagent:** `weekly-report` and `prep-boss-1-1` can delegate their
+> cross-org analysis to an `org-analyst` subagent, which keeps the main context lean on large
+> orgs. Plain `npx skills` does **not** install subagents — the skills fall back to doing the
+> analysis inline (same result, more context used). To install it, run `install.sh` from your
+> local clone into your project or globally, e.g.
+> `./install.sh --global --agent org-analyst` (see the root README for all options).
+
 ## The skills
 
 | Skill | Invoke with | Use it… |

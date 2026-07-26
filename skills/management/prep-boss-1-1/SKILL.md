@@ -22,9 +22,11 @@ holds the boss's profile and goals) and `skills/management/doc/conventions.md`.
    `org.md`) to see what the leader has been working on recently (wiki pages, notable chat) and
    what the boss is currently focused on. This is the raw material for finding overlap.
 
-4. **Analyze.** Use the `org-analyst` agent for a ranked cross-org read — achievements, risks,
-   concerns, cross-cutting patterns, cross-org dependencies (from stakeholders), and questions
-   the boss may ask.
+4. **Analyze.** If an `org-analyst` subagent is available, delegate the cross-org read to it;
+   otherwise do it inline. Produce a ranked read — achievements, risks, concerns, cross-cutting
+   patterns, cross-org dependencies (from stakeholders), and questions the boss may ask. (The
+   subagent isn't installed by plain `npx skills` — see the category README; inline yields the
+   same result, using more of the main context.)
 
 5. **Produce the briefing** (save to `prep/boss-YYYY-MM-DD.md` and show it):
    - **How my org is doing** — the honest current state at VP altitude: outcomes, trajectory,

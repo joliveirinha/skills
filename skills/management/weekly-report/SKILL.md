@@ -17,11 +17,13 @@ drafts — the leader edits and sends. Read `org.md`, the team summaries, and `s
 2. **Pull signals.** Run `sync-signals org` (and per-team as useful) to catch activity not yet
    in any summary — shipped work, incidents, slipping items.
 
-3. **Analyze across the org.** Delegate to the `org-analyst` agent, pointing it at `org.md`,
+3. **Analyze across the org.** If an `org-analyst` subagent is available, delegate the cross-org
+   synthesis to it; otherwise do the same analysis inline. Either way, read `org.md`,
    `teams/*/summary.md`, `teams/*/health.md`, `projects/*.md`, `stakeholders/*/summary.md`, and
-   the signals cache. Ask it for ranked achievements, risks, concerns, cross-cutting patterns,
+   the signals cache, and produce ranked achievements, risks, concerns, cross-cutting patterns,
    **cross-org dependencies/friction from stakeholders**, and the questions the leader should be
-   ready for.
+   ready for. (The subagent isn't installed by plain `npx skills` — see the category README; the
+   inline path yields the same result, just using more of the main context.)
 
 4. **Draft the report** to `reports/vp/YYYY-MM-DD.md` with these sections:
    - **Successes** — 3–5 concrete wins, each tied to a team/person/project and its impact.
