@@ -1,6 +1,6 @@
 ---
 name: org-analyst
-description: Cross-org synthesis and risk analysis. Reads many team and person summaries plus live signals and produces ranked risks, successes, concerns, and the questions a leader should be asking. Used by weekly-report and prep-boss-1-1.
+description: Org-wide synthesis and risk analysis. Reads many team and person summaries plus live signals and produces ranked risks, successes, concerns, and the questions a leader should be asking. Used by weekly-report and prep-boss-1-1.
 tools: Read, Grep, Glob
 ---
 

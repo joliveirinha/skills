@@ -29,7 +29,7 @@ yourself.
    `org.md`) to see what the leader has been working on recently (wiki pages, notable chat) and
    what the boss is currently focused on. This is the raw material for finding overlap.
 
-4. **Analyze.** Delegate the cross-org read to the `org-analyst` subagent. Produce a ranked read —
+4. **Analyze.** Delegate the org-wide read to the `org-analyst` subagent. Produce a ranked read —
    achievements, risks, concerns, cross-cutting patterns, cross-org dependencies (from
    stakeholders), and questions the boss may ask.
 

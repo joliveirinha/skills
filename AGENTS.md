@@ -90,7 +90,7 @@ Key ideas that span skills:
   `issue-tracker`, `wiki`, `chat`, `code`), never products; the data repo's `mcp-map.md` binds
   them. Some data is **required** (roster pull — block/ask if unavailable), most is
   **enrichment** (pull when available, degrade gracefully) — see `sync-signals`.
-- **`org-analyst` subagent (required)**: `weekly-report` and `prep-boss-1-1` delegate cross-org
+- **`org-analyst` subagent (required)**: `weekly-report` and `prep-boss-1-1` delegate org-wide
   synthesis to it directly — `setup-management-os` guarantees it's installed, so these skills
   don't carry an inline fallback.
 

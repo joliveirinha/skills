@@ -1,6 +1,6 @@
 ---
 name: weekly-report
-description: Draft the leader's weekly upward report to their manager. Refreshes org roll-ups, pulls live signals, runs cross-org analysis, and produces a dated draft of successes, top risks, concerns, decisions needed, asks, and bidirectional feedback for the leader to edit.
+description: Draft the leader's weekly upward report to their manager. Refreshes org roll-ups, pulls live signals, runs org-wide analysis, and produces a dated draft of successes, top risks, concerns, decisions needed, asks, and bidirectional feedback for the leader to edit.
 disable-model-invocation: true
 ---
 
@@ -25,7 +25,7 @@ yourself.
 2. **Pull signals.** Run `sync-signals org` (and per-team as useful) to catch activity not yet
    in any summary — shipped work, incidents, slipping items.
 
-3. **Analyze across the org.** Delegate the cross-org synthesis to the `org-analyst` subagent,
+3. **Analyze across the org.** Delegate the org-wide synthesis to the `org-analyst` subagent,
    pointing it at `org.md`, `teams/*/summary.md`, `teams/*/health.md`, `projects/*.md`,
    `stakeholders/*/summary.md`, and the signals cache. It should produce ranked achievements,
    risks, concerns, cross-cutting patterns, **cross-org dependencies/friction from stakeholders**,

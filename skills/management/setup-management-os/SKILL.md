@@ -128,7 +128,7 @@ file exists, ask the leader which one to create; never create the other one if o
 
 ## Step 9 — Install the `org-analyst` subagent
 
-`weekly-report` and `prep-boss-1-1` delegate cross-org synthesis to `org-analyst` — it's required,
+`weekly-report` and `prep-boss-1-1` delegate org-wide synthesis to `org-analyst` — it's required,
 not optional, so this step isn't skippable.
 
 1. Check for candidate install locations: a project-level `.claude/` or `.opencode/` here, and
