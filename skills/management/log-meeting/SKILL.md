@@ -26,14 +26,18 @@ Capture a meeting into the right team or project log. Read `skills/management/do
 
 ## Steps
 
-1. **Resolve the target** team or project. If it's a project not yet in
+1. **Resolve the target** team or project — confirm which one rather than assuming when it's
+   ambiguous (per **Never assume — ask** in `conventions.md`). If it's a project not yet in
    `projects/_index.md`, offer to add it.
 
 2. **Distill** a transcript to substance (decisions, risks, blockers, owners, dates); clean up
    notes lightly without inventing content.
 
 3. **Append the raw entry** to `teams/<slug>/log/` or write it against the project, using the
-   entry shape. Append-only; disambiguate same-day entries with `-2`.
+   entry shape. Record **who attended and their roles** in the entry's `## Participants` block —
+   resolve names/roles from the roster and stakeholder index, then tools, then ask (per **Never
+   assume — ask**); cross-link tracked people by slug, and offer to add an untracked-but-relevant
+   attendee. Append-only; disambiguate same-day entries with `-2`.
 
 4. **Update project state** (if project-scoped): status/RAG, milestones, dependencies, and the
    decision log in `projects/<slug>.md`. Add new risks to that project's risk list.

@@ -28,6 +28,8 @@ The **IC's name** (resolve to a slug via `people/_index.md`; ask if ambiguous).
      say, both praise and constructive.
    - **Open follow-ups** — unresolved action items from prior entries; note which are theirs vs
      yours.
+   - **Growth / trajectory** — from the summary's accumulating `## Growth / trajectory`: how
+     they've been developing over time, so feedback and career conversation build on that arc.
    - **Questions to ask** — a short, pointed list to open conversation and surface risks (career
      growth, blockers, morale, collaboration).
 

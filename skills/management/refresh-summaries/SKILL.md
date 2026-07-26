@@ -17,7 +17,9 @@ if unspecified for a weekly run; `log-1-1` calls this with a single person or st
 1. **Person summaries** — for each in-scope person: read `people/<p>/log/` entries newer than
    `last_rolled_up`; fold them into `summary.md` under `## Current work`, `## Concerns`,
    `## Feedback to give`, `## Open follow-ups`. Prefer updating/retiring existing points over
-   appending duplicates. Stamp the new `last_rolled_up`.
+   appending duplicates. **Also append** any growth/development signals in those entries to
+   `## Growth / trajectory` as dated lines — this section accumulates and older lines are never
+   dropped (see conventions). Stamp the new `last_rolled_up`.
 2. **Stakeholder summaries** — for each in-scope stakeholder: read `stakeholders/<s>/log/` newer
    than `last_rolled_up` (+ signals) and update `summary.md` (`## Relationship state`, `## Shared
    projects & dependencies`, `## Open threads / asks`, `## Friction & risks`). Stamp the date.
@@ -37,7 +39,8 @@ if unspecified for a weekly run; `log-1-1` calls this with a single person or st
 ## Rules
 - Only read what's new. Do not re-summarize history already reflected in a summary.
 - Summaries are a *current* view, not a changelog — merge, promote, and drop stale points; the
-  raw log is the historical record.
+  raw log is the historical record. **Exception:** a person's `## Growth / trajectory` accumulates
+  (dated lines, never dropped) — the drop-stale rule applies only to the current-view sections.
 - Pull enrichment via `sync-signals` for team/org levels when tools are mapped (see that skill's
   required-vs-enrichment policy). Skip cleanly if unavailable.
 - Respect scope: refreshing one person must not touch team/org files.

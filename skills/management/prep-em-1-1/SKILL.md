@@ -28,7 +28,9 @@ to the other).
 
 3. **Produce the briefing** (save to `prep/em-<em-slug>-YYYY-MM-DD.md` and show it):
    - **How the team is doing** — delivery, health trends, staffing, morale from `health.md` + signals.
-   - **How the EM is doing** — their own load, growth, effectiveness; distinct from the team's health.
+   - **How the EM is doing** — their own load, effectiveness, and **growth over time** (from the
+     EM's accumulating `## Growth / trajectory` in `people/<em>/summary.md`), so coaching builds on
+     that arc; distinct from the team's health.
    - **Team concerns** — what's trending wrong or needs your attention; key-person and attrition risk.
    - **Top achievements** — wins to acknowledge and reinforce.
    - **Top risks** — ranked, with what you'd want the EM to be doing about each.

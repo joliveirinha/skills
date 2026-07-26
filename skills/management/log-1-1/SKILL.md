@@ -22,7 +22,9 @@ Turn the notes from one conversation into a durable log entry plus an updated su
 1. **Resolve who, and which area.** Look the name up in `people/_index.md` first, then
    `stakeholders/_index.md`. A **report** logs under `people/<slug>/`; a **peer / cross-org
    stakeholder** logs under `stakeholders/<slug>/`. Confirm the match if there's any doubt; if the
-   name is unknown, ask whether they're a report or a peer and offer to create the entry.
+   name is unknown, ask whether they're a report or a peer and offer to create the entry. Same for
+   any project or role the conversation references but you can't resolve — that's just the
+   **Never assume — ask** principle (`conventions.md`) at work.
 
 2. **Distill the input.** If it's a transcript, condense to the substance — decisions,
    concerns, commitments, mood — don't store the verbatim transcript. If it's notes, clean them

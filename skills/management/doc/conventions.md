@@ -3,6 +3,16 @@
 All files in the **data repo** (the private repo you install these skills into) follow the
 formats below. Skills read and write to these shapes; keep them stable.
 
+## Never assume — ask
+
+The overriding principle for every skill: **don't guess.** When a skill can't determine something
+it needs — who someone is, their role, which project a topic belongs to, who was in a meeting,
+anything — it first resolves what it can from the data (the index files below) and available tools
+(per `mcp-map.md`), and otherwise **asks the leader** rather than silently proceeding on an inferred
+value. When it surfaces a new person or project that matters, it offers to add it (a report via
+`update-org`, a peer as a stakeholder, a project row) rather than leaving it floating. This applies
+everywhere; the individual skills don't restate it case by case.
+
 ## Slugs & naming
 - People and teams use kebab-case slugs derived from the display name: `Jane Doe → jane-doe`.
 - Raw log entries: `log/YYYY-MM-DD-<type>.md`. If two entries share a date+type, append `-2`, `-3`.
@@ -120,7 +130,13 @@ last_rolled_up: 2026-07-18
 date. Never hand-edit this date to a future value — it would skip entries.
 
 ### Person `summary.md` sections
-`## Current work` · `## Concerns` · `## Feedback to give` · `## Open follow-ups`
+`## Current work` · `## Concerns` · `## Feedback to give` · `## Open follow-ups` · `## Growth / trajectory`
+
+The first four are a **current snapshot** — the roll-up merges, promotes, and drops stale points.
+`## Growth / trajectory` is different: it's an **accumulating, dated record** of how the person is
+evolving — one concise line per notable development, each with a date (like `health.md` trend
+lines), so growth over time stays visible. The roll-up **appends** to it and **never drops** older
+lines; it is the one part of a person summary exempt from the drop-stale rule.
 
 ### Team `summary.md` sections
 `## Health` · `## Top achievements` · `## Top risks` · `## EM notes`
@@ -154,6 +170,18 @@ with: jane-doe
 ```
 
 Raw entries are **append-only**. Correct mistakes with a new entry, don't rewrite history.
+
+**Team/project meeting entries** (from `log-meeting`) add an optional `## Participants` block —
+who was in the room and their role — so the meeting's context is materialized in the entry itself
+(no folder per attendee). Cross-link anyone already tracked by their slug:
+
+```markdown
+## Participants
+- Jane Doe (jane-doe) — Senior SWE
+- Priya Nair — EM, Data Platform (not tracked)
+```
+
+Resolve unknown attendees/roles per the **Never assume — ask** principle above.
 
 ## mcp-map.md
 

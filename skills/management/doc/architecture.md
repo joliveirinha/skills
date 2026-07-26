@@ -44,6 +44,21 @@ For a leader who manages ICs directly (see **Management span** below) there is a
 separate org layer: the roll-up is just person → team, and that team summary *is* the boss-facing
 top-level view.
 
+## Knowledge retention (keep everything, read the summary)
+
+Nothing is ever discarded, but no skill re-reads the whole history:
+
+- **Raw `log/` entries are append-only and kept forever** — the complete, immutable record. Full
+  retention lives here.
+- **The rolling `summary.md` is the read layer.** Prep and reporting skills read the summary plus
+  only the newest/recent entries and live signals — never the entire log. `last_rolled_up` gates
+  the incremental roll-up so cost stays flat as history grows.
+- So the picture you read is always synthesized and current; the raw detail is always still on disk
+  if you need to go back to it.
+- **One exception to "summary = current snapshot":** a person summary's `## Growth / trajectory`
+  section *accumulates* (dated lines, never dropped) so how someone has grown over time stays
+  visible. Every other summary section is a current view that merges and drops stale points.
+
 ## Management span (what the leader manages)
 
 The leader's **span** — recorded once as `manages` in the `## Roles` block of `org.md` (see
