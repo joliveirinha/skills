@@ -59,7 +59,7 @@ agent_desc() { sed -n 's/^description: //p' "$1" | head -1; }
 agent_name() { local b; b="$(basename "$1")"; echo "${b%.md}"; }
 
 if [ "${#AGENT_FILES[@]}" -eq 0 ]; then
-  echo "No agents found under $SCRIPT_DIR/skills/*/.agents/ — nothing to do." >&2
+  echo "No agents found under ${SCRIPT_DIR}/skills/*/.agents/ — nothing to do." >&2
   exit 0
 fi
 
@@ -120,7 +120,7 @@ fi
 # --- optional: install the skills too ---------------------------------------
 if $WITH_SKILLS; then
   agent_args=(); $have_claude && agent_args+=(-a claude-code); $have_opencode && agent_args+=(-a opencode)
-  echo; echo "Installing skills from $SOURCE…"
+  echo; echo "Installing skills from ${SOURCE}…"
   case "$SCOPE" in
     global) npx -y skills add "$SOURCE" "${agent_args[@]}" -g -y ;;
     *)      ( cd "$DEST" && npx -y skills add "$SOURCE" "${agent_args[@]}" -y ) ;;
