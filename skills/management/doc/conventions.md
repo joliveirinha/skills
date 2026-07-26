@@ -7,7 +7,9 @@ formats below. Skills read and write to these shapes; keep them stable.
 - People and teams use kebab-case slugs derived from the display name: `Jane Doe → jane-doe`.
 - Raw log entries: `log/YYYY-MM-DD-<type>.md`. If two entries share a date+type, append `-2`, `-3`.
 - Entry types: `1-1`, `skip` (skip-level), `adhoc`, `feedback` (person logs); `sync`, `retro`,
-  `standup`, `review`, `incident`, `project` (team/project logs).
+  `standup`, `review`, `incident`, `project` (team/project logs). `skip` only applies when the
+  leader manages EMs/managers (i.e. their reports have their own reports); a manager of ICs
+  won't use it. See **Management span** in `architecture.md`.
 
 ## Index files (the "database")
 
@@ -16,8 +18,11 @@ formats below. Skills read and write to these shapes; keep them stable.
 ```markdown
 | name | slug | role | level | team | manager | kind | start | status |
 |------|------|------|-------|------|---------|------|-------|--------|
-| Jane Doe | jane-doe | Senior SWE | L5 | platform | john-em | ic | 2023-02-01 | active |
+| Jane Doe | jane-doe | Senior SWE | (your scheme) | platform | john-em | ic | 2023-02-01 | active |
 ```
+
+(`level` uses whatever leveling scheme your company does — e.g. `L5`, `IC3`, `E4`, `Senior`. It's
+free text; the skills don't parse it.)
 
 `teams/_index.md` — team → EM → members + management mode:
 
@@ -27,7 +32,9 @@ formats below. Skills read and write to these shapes; keep them stable.
 | Platform | platform | John EM (john-em) | em-led | 6 | jane-doe, ... |
 ```
 
-(`mode` is `directly-managed` or `em-led`.)
+(`mode` is `directly-managed` or `em-led`. The `em-led` mode only applies when the leader manages
+EMs; a manager of ICs has a single directly-managed team — see **Management span** in
+`architecture.md`.)
 
 `projects/_index.md` — the project registry:
 
@@ -41,16 +48,37 @@ formats below. Skills read and write to these shapes; keep them stable.
 ```markdown
 | name | slug | role | their org | relationship | shared projects |
 |------|------|------|-----------|--------------|-----------------|
-| Dana Ray | dana-ray | Director | Data Platform | peer-director | streaming-migration |
+| Dana Ray | dana-ray | (their role) | Data Platform | peer | streaming-migration |
 ```
 
-(`relationship` examples: `peer-director`, `partner-em`, `partner-pm`, `exec-stakeholder`.)
+(`relationship` describes how they relate to the leader — e.g. `peer` (same level, another org),
+`partner-em`, `partner-pm`, `exec-stakeholder`. Use whatever labels fit your org.)
 
-## org.md — identifiers for signal lookup
+## org.md — roles, identifiers, and calibration
 
-`org.md` holds the org overview, how it fits the parent org, and the boss's profile + goals.
-It also records **handles** so signals can be pulled for people who have no folder — the
-leader themselves and the boss:
+`org.md` holds the overview of what the leader runs, how it fits the wider org, the leader's and
+boss's roles, and the boss's profile + goals. It also records **handles** so signals can be pulled
+for people who have no folder — the leader themselves and the boss.
+
+### Roles block
+
+The single place that pins down **who the leader is** and **who they report to**. Every
+upward-facing and structural skill reads it — nothing else hardcodes a level or span:
+
+```markdown
+## Roles
+- self: <role> · <level> · manages <ICs | EMs | managers-of-managers>
+- boss: <role> · <level>
+```
+
+- `role`/`level` — free text in whatever titles/scheme the company uses (e.g. `Engineering Manager`
+  · `M4`, `Director` · `L7`, `VP` · `E9`). The skills don't parse them; they compare them to gauge
+  the level gap for altitude (below).
+- `manages` — the leader's **span**, and the switch that selects which structural layers are active
+  (see **Management span** in `architecture.md`): `ICs` (first-line manager of a single team),
+  `EMs`, or `managers-of-managers`.
+
+### Identifiers & boss goals
 
 ```markdown
 ## Identifiers
@@ -61,8 +89,22 @@ leader themselves and the boss:
 - ...
 ```
 
-`prep-boss-1-1` and `sync-signals` read these to fetch the leader's and the boss's recent
-activity.
+`prep-boss-1-1` and `sync-signals` read these to fetch the leader's and the boss's recent activity.
+
+### Altitude & span calibration
+
+The **single source** the upward/structural skills point at (by concept, not by copying rules), so
+this guidance can grow — e.g. into explicit per-level tables — without editing any skill:
+
+- **Altitude.** Frame upward artifacts (`weekly-report`, `prep-boss-1-1`) at the **boss's**
+  altitude, read from the `## Roles` block. Scale depth **inversely to the level gap**: a large gap
+  (e.g. Director → VP) means fewer task-level details and more outcomes / trajectory / risk; a small
+  gap (e.g. manager-of-ICs → senior manager) means more concrete delivery detail is appropriate. If
+  the `## Roles` block is missing, say so and fall back to a neutral manager-to-manager altitude.
+- **Span.** The `manages` value selects which structural layers exist — a manager of ICs has no
+  EMs, no skip-levels, and one team that *is* the top-level view (see **Management span**).
+- **Cadence.** "Weekly" is the **default** rhythm for the upward report and roll-up, not a rule —
+  adjust to whatever cadence the leader actually reports on.
 
 ## Rolling summary frontmatter
 

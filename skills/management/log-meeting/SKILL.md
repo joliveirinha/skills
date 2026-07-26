@@ -15,7 +15,9 @@ Capture a meeting into the right team or project log. Read `skills/management/do
 - **Critical / cross-cutting project** meetings the leader attends → log to the project.
 - **Do not** use this for EM-led teams' internal meetings — the leader doesn't attend those;
   that visibility comes through `log-1-1` with the EM. If asked to log an EM-led team's meeting,
-  point that out and confirm before proceeding.
+  point that out and confirm before proceeding. (EM-led teams exist only when the leader manages
+  EMs — see **Management span** in `architecture.md`; a manager of ICs logs their one team's
+  meetings here as directly-managed.)
 
 ## Inputs
 - **Which team or project** (resolve via `teams/_index.md` or `projects/_index.md`).

@@ -43,9 +43,11 @@ Turn the notes from one conversation into a durable log entry plus an updated su
    stakeholder (it reads only entries newer than `last_rolled_up`, folds this entry into
    `summary.md`, and re-stamps the date). Keep it scoped — do not roll up the whole team here.
 
-6. **If this is an EM 1:1**, remember (per the meeting-scope model) that this entry is a primary
-   source of visibility into that EM's team. Capture team-level signals — delivery, risks,
-   morale, staffing — clearly, since they will feed the team summary at the next team roll-up.
+6. **If this is an EM 1:1** (only when the leader manages EMs — see **Management span** in
+   `architecture.md`), remember (per the meeting-scope model) that this entry is a primary source of
+   visibility into that EM's team. Capture team-level signals — delivery, risks, morale, staffing —
+   clearly, since they will feed the team summary at the next team roll-up. (`skip`-level entries
+   likewise only arise when the leader manages managers.)
 
 ## Finish
 Confirm the entry path, list the action items you captured, and surface anything that looks like

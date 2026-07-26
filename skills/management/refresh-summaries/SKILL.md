@@ -25,10 +25,14 @@ if unspecified for a weekly run; `log-1-1` calls this with a single person or st
 3. **Team summaries** — for each in-scope team: read its members' summaries + the team `log/`
    (directly-managed) or the EM-1:1 entries + signals (em-led, per the meeting-scope model) +
    `sync-signals` output. Update `summary.md` (`## Health`, `## Top achievements`, `## Top
-   risks`, `## EM notes`) and `health.md` trend lines. Stamp the date.
-4. **Org section** — update the org-state portion of `org.md` from the team summaries **and**
-   stakeholder summaries: the handful of things true across the org right now, the top
-   cross-cutting risks, and cross-org dependencies/friction drawn from stakeholders.
+   risks`, `## EM notes`) and `health.md` trend lines. Stamp the date. (The em-led input path
+   applies only when the leader manages EMs — see **Management span** in `architecture.md`; a
+   manager of ICs has one directly-managed team.)
+4. **Org section** — **only when the leader manages EMs/managers** (span from `org.md` `## Roles`):
+   update the org-state portion of `org.md` from the team summaries **and** stakeholder summaries:
+   the handful of things true across the org right now, the top cross-cutting risks, and cross-org
+   dependencies/friction drawn from stakeholders. For a manager of ICs there is no separate org
+   layer — stop at the single team summary, which serves as the top-level view.
 
 ## Rules
 - Only read what's new. Do not re-summarize history already reflected in a summary.

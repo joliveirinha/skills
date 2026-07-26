@@ -6,8 +6,11 @@ disable-model-invocation: true
 
 # weekly-report
 
-Produce a review-ready draft of the report a Director gives a VP. It gathers, synthesizes, and
-drafts — the leader edits and sends. Read `org.md`, the team summaries, and `skills/management/doc/conventions.md`.
+Produce a review-ready draft of the leader's upward report to their manager. It gathers,
+synthesizes, and drafts — the leader edits and sends. Read `org.md` (including the `## Roles` block
+and the **Altitude & span calibration** note), the team summaries, and
+`skills/management/doc/conventions.md`. Pitch the whole report at the **boss's** altitude from
+`## Roles`, scaled to the level gap.
 
 ## Steps
 
@@ -25,15 +28,15 @@ drafts — the leader edits and sends. Read `org.md`, the team summaries, and `s
    ready for. (The subagent isn't installed by plain `npx skills` — see the category README; the
    inline path yields the same result, just using more of the main context.)
 
-4. **Draft the report** to `reports/vp/YYYY-MM-DD.md` with these sections:
+4. **Draft the report** to `reports/upward/YYYY-MM-DD.md` with these sections:
    - **Successes** — 3–5 concrete wins, each tied to a team/person/project and its impact.
    - **Top risks** — ranked; each with impact, what's being done, and any decision or help needed.
    - **Concerns** — softer signals trending wrong (staffing, morale, delivery, key-person risk).
    - **Cross-org dependencies** — where progress hinges on another org (from stakeholders), and
-     any relationship friction the VP can help unblock.
-   - **Decisions needed / asks of the VP** — specific, answerable requests.
+     any relationship friction the boss can help unblock.
+   - **Decisions needed / asks of the boss** — specific, answerable requests.
    - **Feedback — up** — what the leader wants to tell their manager (candid, constructive).
-   - **Feedback — down/across** — themes the leader is carrying from the org that the VP should
+   - **Feedback — down/across** — themes the leader is carrying from the org that the boss should
      be aware of.
    - **How I can help my boss / how my boss can help me** — the two-way support framing.
 
@@ -42,7 +45,9 @@ drafts — the leader edits and sends. Read `org.md`, the team summaries, and `s
   or risks.
 - Keep individual performance/comp details **out** of the upward report unless the leader
   explicitly wants to raise a specific personnel matter.
-- Bullet points, VP-appropriate altitude — outcomes and risks, not task-level detail.
+- Bullet points, pitched at the boss's altitude (from `org.md` `## Roles`) and scaled to the level
+  gap — a large gap favors outcomes and risks over task-level detail; a small gap allows more
+  concrete delivery detail. See the calibration note in conventions.md.
 - Flag stale inputs (a team not refreshed recently) so the leader knows where the picture is thin.
 
 ## Finish

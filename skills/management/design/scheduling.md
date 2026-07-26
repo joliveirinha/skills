@@ -13,7 +13,7 @@ generating them, while keeping capture (which needs human notes) manual.
 1. **Nightly signal warm-up** — run `sync-signals` for all active people/teams so caches are
    fresh before morning prep. Low value if signals are cheap to pull on demand; revisit.
 2. **Weekly roll-up + report draft** — on a chosen morning:
-   `refresh-summaries all` → `weekly-report` → leave a draft in `reports/vp/<date>.md` and
+   `refresh-summaries all` → `weekly-report` → leave a draft in `reports/upward/<date>.md` and
    notify the leader to review/edit. This is the highest-value automation.
 3. **Staleness nudge** — flag any `summary.md` whose `last_rolled_up` is older than N days, or
    any team with no signal/entry in N days, and surface it as a to-do.

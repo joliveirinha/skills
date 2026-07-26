@@ -30,9 +30,19 @@ Ask which capabilities are available and which MCP tool backs each: `service-cat
 
 ## Step 3 — Interview for structure
 
-Gather: the org's mission and how it fits the parent org; who the leader's manager (boss) is
-and their goals; the list of teams; for each team its EM and whether it is `directly-managed`
-or `em-led`; and any known peers / cross-org stakeholders worth tracking.
+**Establish roles and span first** — they shape everything else. Ask for the leader's own role and
+level; who the leader's manager (boss) is, their role and level; and the leader's **span** — do they
+manage `ICs`, `EMs`, or `managers-of-managers`? Write these to the `## Roles` block of `org.md` per
+`skills/management/doc/conventions.md`. The `manages` value selects the structure (see **Management
+span** in `skills/management/doc/architecture.md`):
+
+- **manages ICs** → a single directly-managed team; **don't** ask about EM-led vs directly-managed
+  modes, skip-levels, or a multi-team org. That one team is the top-level view.
+- **manages EMs / managers-of-managers** → the multi-team path: the list of teams, and for each its
+  EM and whether it is `directly-managed` or `em-led`.
+
+Then gather: the mission of what the leader runs and how it fits the wider org; the boss's goals;
+and any known peers / cross-org stakeholders worth tracking.
 
 Also capture **identifiers** for signal lookup (written to `org.md` per
 `skills/management/doc/conventions.md`): the leader's own handles (chat, wiki/author id, catalog
@@ -41,7 +51,9 @@ the boss's recent activity even though neither has a person folder.
 
 ## Step 4 — Populate the roster (service catalog is required here)
 
-For each team, get its **ICs + EM**. This is required-for-correctness data:
+For each team, get its members — **ICs + EM** for an EM-led team, or just the **ICs** for a
+manager-of-ICs' single team (there's no separate EM — the leader runs it). This is
+required-for-correctness data:
 
 - If a `service-catalog` MCP is available, pull the roster from it.
 - If it is **not** available, say so explicitly and either ask the leader to provide the team
@@ -51,8 +63,8 @@ For each team, get its **ICs + EM**. This is required-for-correctness data:
 ## Step 5 — Scaffold the tree
 
 Create, per `skills/management/doc/conventions.md`:
-- `org.md` (mission, parent-org fit, boss profile + goals, and the `## Identifiers` block for
-  self + boss handles).
+- `org.md` (mission, wider-org fit, the `## Roles` block for self/boss role/level + span, boss
+  profile + goals, and the `## Identifiers` block for self + boss handles).
 - `people/_index.md`, and for each person a `people/<slug>/` folder with a `profile.md` stub,
   an empty `log/`, and a `summary.md` seeded with `last_rolled_up: <today - conservatively old>`
   so the first roll-up reads everything.
@@ -60,7 +72,7 @@ Create, per `skills/management/doc/conventions.md`:
   stub, and `summary.md`.
 - `stakeholders/_index.md`, and for any known peers a `stakeholders/<slug>/` with `profile.md`,
   `log/`, and a `summary.md` (relationship sections per conventions).
-- `projects/_index.md` (rows optional at first), `reports/vp/`, `prep/`.
+- `projects/_index.md` (rows optional at first), `reports/upward/`, `prep/`.
 - A `.gitignore` posture appropriate to a private repo, and confirm to the leader this repo must
   stay private.
 
@@ -71,7 +83,8 @@ the available skills (mirror the table in this package's README, adapted to what
 This is the leader's at-a-glance guide. Include:
 - The capture → synthesis → prep flow.
 - When to run each skill (after 1:1s, after meetings, weekly, on reorg).
-- The meeting-scope model (directly-managed vs em-led — see `skills/management/doc/architecture.md`).
+- The meeting-scope model, if the leader manages EMs (directly-managed vs em-led — see
+  `skills/management/doc/architecture.md`); for a manager of ICs, note the single-team shape instead.
 
 ## Finish
 

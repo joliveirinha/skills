@@ -2,9 +2,15 @@
 
 A set of [Claude Code](https://claude.com/claude-code) skills that give an engineering
 leader a durable, git-backed "management operating system": a raw log of every interaction
-plus **rolling summaries at person → team → org levels**, so that before any meeting you can
-generate a focused, current briefing, and every week you can draft an upward report of
-successes / risks / concerns / asks.
+plus **rolling summaries** — at **person → team → org** levels for a leader who manages
+managers, collapsing to **person → team** for a first-line manager of ICs — so that before any
+meeting you can generate a focused, current briefing, and every week you can draft an upward
+report of successes / risks / concerns / asks.
+
+The skills adapt to **your** role and span: they read your and your boss's role/level and what you
+manage (ICs, EMs, or managers) from your data repo's `org.md`, and calibrate report altitude and
+structure accordingly — a manager of ICs writing to a senior manager gets a different depth than a
+director writing to a VP.
 
 The skills are **tool-agnostic**. They talk about *capabilities* — a service catalog, an
 issue tracker, a wiki, a chat system, a code host — never a specific product. Which real
@@ -47,13 +53,13 @@ management repo**, bootstrap the structure:
 |---|---|---|
 | **scaffold-management-os** | `/scaffold-management-os` | Once to bootstrap the repo; re-run anytime to reconcile drift. Writes your data repo's own README. |
 | **update-org** | `/update-org` | For reorg events: hires, departures, moving a person between teams, a team joining or leaving your org, adding/retiring a peer stakeholder. |
-| **log-1-1** | `/log-1-1` | After any 1:1, skip-level, ad-hoc, or **peer meeting** — paste notes or a transcript. |
+| **log-1-1** | `/log-1-1` | After any 1:1, skip-level (if you manage managers), ad-hoc, or **peer meeting** — paste notes or a transcript. |
 | **log-meeting** | `/log-meeting` | After a team/project meeting you attended — paste notes or a transcript. |
 | **refresh-summaries** | `/refresh-summaries` | To roll up person → team → org summaries (usually chained automatically). |
 | **sync-signals** | (automatic) | Helper that pulls live activity from your connected tools. |
 | **weekly-report** | `/weekly-report` | Weekly, to draft your upward report. |
 | **prep-ic-1-1** | `/prep-ic-1-1 <name>` | Before a 1:1 with an IC. |
-| **prep-em-1-1** | `/prep-em-1-1 <em-or-team>` | Before a 1:1 with an engineering manager. |
+| **prep-em-1-1** | `/prep-em-1-1 <em-or-team>` | Before a 1:1 with an engineering manager (if you manage EMs). |
 | **prep-peer-1-1** | `/prep-peer-1-1 <name>` | Before a meeting with a peer / cross-org stakeholder. |
 | **prep-boss-1-1** | `/prep-boss-1-1` | Before a 1:1 with your manager. |
 

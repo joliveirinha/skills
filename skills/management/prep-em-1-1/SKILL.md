@@ -10,6 +10,9 @@ Prep an EM 1:1 that covers both the team and the manager. For EM-led teams this 
 leader's main window into the team, so treat it as both a status and a coaching conversation.
 Read `skills/management/doc/architecture.md` (meeting-scope model) and `skills/management/doc/conventions.md`.
 
+> **Applies only when the leader manages EMs** (span from the `## Roles` block in `org.md` — see
+> **Management span** in `architecture.md`). A manager of ICs has no EMs; use `prep-ic-1-1` instead.
+
 ## Input
 The **EM's name or their team** (resolve via `people/_index.md` / `teams/_index.md`; each maps
 to the other).

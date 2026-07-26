@@ -6,16 +6,18 @@ disable-model-invocation: true
 
 # prep-boss-1-1
 
-Prep the upward 1:1 — a two-way conversation, not just a status readout. Read `org.md` (which
-holds the boss's profile and goals) and `skills/management/doc/conventions.md`.
+Prep the upward 1:1 — a two-way conversation, not just a status readout. Read `org.md` (which holds
+the `## Roles` block, the boss's profile and goals) and `skills/management/doc/conventions.md`
+(including the **Altitude & span calibration** note). Pitch the briefing at the **boss's** altitude
+from `## Roles`.
 
 ## Steps
 
 1. **Freshen the org view.** If team/org summaries are stale, run `refresh-summaries all` first.
 
-2. **Load context.** Read `org.md` (org state, parent-org fit, boss's goals, and the
-   `## Identifiers` block), the latest `reports/vp/` report, the team summaries, and the
-   `stakeholders/*/summary.md` (cross-org relationships are often the most VP-relevant). Run
+2. **Load context.** Read `org.md` (the `## Roles` block, org state, wider-org fit, boss's goals,
+   and the `## Identifiers` block), the latest `reports/upward/` report, the team summaries, and the
+   `stakeholders/*/summary.md` (cross-org relationships are often the most relevant to the boss). Run
    `sync-signals org` for anything material that landed since the last roll-up.
 
 3. **Pull self + boss activity.** Run `sync-signals self` and `sync-signals boss` (handles from
@@ -29,8 +31,8 @@ holds the boss's profile and goals) and `skills/management/doc/conventions.md`.
    same result, using more of the main context.)
 
 5. **Produce the briefing** (save to `prep/boss-YYYY-MM-DD.md` and show it):
-   - **How my org is doing** — the honest current state at VP altitude: outcomes, trajectory,
-     top risks.
+   - **How my org is doing** — the honest current state at the boss's altitude: outcomes,
+     trajectory, top risks.
    - **My main concerns** — what's keeping the leader up, and what (if anything) they need from
      the boss on each.
    - **Scope intersections** — where the leader's recent work and the boss's recent focus overlap
@@ -47,8 +49,9 @@ holds the boss's profile and goals) and `skills/management/doc/conventions.md`.
      cross-org unblocking.
 
 ## Rules
-- **Manager-to-manager altitude.** Keep everything high-level; this is a director→VP
-  conversation. **Exclude low-level technical detail** unless it maps to a high-level topic — a
+- **Manager-to-manager altitude.** Pitch at the boss's altitude — read the `## Roles` block in
+  `org.md` and scale to the level gap (see the calibration note in conventions.md). Keep it
+  high-level; **exclude low-level technical detail** unless it maps to a high-level topic — a
   **critical project** or a **critical person**. When a technical item does surface, frame it in
   terms of outcome, risk, or decision, not implementation.
 - Anchor "how I can help my boss" in the boss's actual goals from `org.md` — not generic

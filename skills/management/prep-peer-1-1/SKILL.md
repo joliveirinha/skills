@@ -1,6 +1,6 @@
 ---
 name: prep-peer-1-1
-description: Prepare a briefing before a meeting with a peer or cross-org stakeholder (fellow director, partner manager, PM in another org). Given their name, produces relationship state, shared projects and dependencies, open asks both directions, friction to resolve, cross-org opportunities, and questions to ask.
+description: Prepare a briefing before a meeting with a peer or cross-org stakeholder (a peer leader, partner manager, or PM in another org). Given their name, produces relationship state, shared projects and dependencies, open asks both directions, friction to resolve, cross-org opportunities, and questions to ask.
 disable-model-invocation: true
 ---
 

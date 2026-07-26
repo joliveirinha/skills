@@ -40,9 +40,31 @@ Order is strictly bottom-up: person summaries first, then team summaries (which 
 members' summaries + the team log + signals), then the org section of `org.md` (which reads
 team summaries). `log-1-1` refreshes just the one person it touched — a cheap, immediate update.
 
+For a leader who manages ICs directly (see **Management span** below) there is a single team and no
+separate org layer: the roll-up is just person → team, and that team summary *is* the boss-facing
+top-level view.
+
+## Management span (what the leader manages)
+
+The leader's **span** — recorded once as `manages` in the `## Roles` block of `org.md` (see
+`conventions.md`) — decides which structural layers exist. Skills read it instead of assuming a
+level:
+
+- **Manages ICs** (first-line manager). One team is the whole scope. The model collapses to
+  **person → team**; that team summary doubles as the "org" view the boss sees. There are **no
+  EM-led teams** (the one team is directly-managed), **no skip-levels**, and `prep-em-1-1` doesn't
+  apply — `prep-ic-1-1` is the main downward prep. `org.md` still exists, holding the roles, the
+  boss context, and the team-level top view.
+- **Manages EMs / managers-of-managers.** The full multi-team model below applies: several teams
+  (each directly-managed or EM-led), skip-levels, and a person → team → org roll-up.
+
+Everything that follows describes the fuller (manages-EMs) shape; a manages-ICs leader simply uses
+the subset that applies.
+
 ## Meeting-scope model (whose meetings feed what)
 
-The leader manages two kinds of teams, and visibility flows differently:
+A leader who manages EMs has two kinds of teams, and visibility flows differently (a manager of ICs
+has just one directly-managed team — the EM-led branch below simply doesn't apply):
 
 - **Directly-managed teams** — the leader attends their eng syncs, retros, standups. These go
   through `log-meeting` into `teams/<t>/log/`, and feed the team summary directly.
@@ -64,7 +86,7 @@ as people but a *relationship-centric* summary (shared projects, dependencies, a
 friction). `log-1-1` routes a peer meeting here instead of `people/`. Stakeholders do **not**
 roll into team or person summaries, but their cross-org dependencies and risks surface at the
 **org** level — the `org-analyst` agent reads `stakeholders/*/summary.md` for `weekly-report`
-and `prep-boss-1-1`, where cross-org relationships are often the most VP-relevant.
+and `prep-boss-1-1`, where cross-org relationships are often the most relevant to the boss.
 
 ## Capabilities, not products
 
