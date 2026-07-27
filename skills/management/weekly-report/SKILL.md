@@ -27,9 +27,10 @@ yourself.
 
 3. **Analyze across the org.** Delegate the org-wide synthesis to the `org-analyst` subagent,
    pointing it at `org.md`, `teams/*/summary.md`, `teams/*/health.md`, `projects/*.md`,
-   `stakeholders/*/summary.md`, and the signals cache. It should produce ranked achievements,
-   risks, concerns, cross-cutting patterns, **cross-org dependencies/friction from stakeholders**,
-   and the questions the leader should be ready for.
+   `stakeholders/*/summary.md`, `forums/*/summary.md` (own-staff for internal cross-team themes;
+   boss-staff/cross-org for direction already set and cross-org threads), and the signals cache.
+   It should produce ranked achievements, risks, concerns, cross-cutting patterns, **cross-org
+   dependencies/friction from stakeholders**, and the questions the leader should be ready for.
 
 4. **Draft the report** to `reports/upward/YYYY-MM-DD.md` with these sections:
    - **Successes** — 3–5 concrete wins, each tied to a team/person/project and its impact.

@@ -55,7 +55,9 @@ span** in `./doc/architecture.md`):
   EM and whether it is `directly-managed` or `em-led`.
 
 Then gather: the mission of what the leader runs and how it fits the wider org; the boss's goals;
-and any known peers / cross-org stakeholders worth tracking.
+any known peers / cross-org stakeholders worth tracking; and any **standing forums** the leader
+attends (their own staff meeting, the boss's staff meeting, cross-org councils) with each one's
+cadence and attendees — see **Standing forums** in `./doc/architecture.md`.
 
 Also capture **identifiers** for signal lookup (written to `org.md` per
 `./doc/conventions.md`): the leader's own handles (chat, wiki/author id, catalog
@@ -85,6 +87,10 @@ Create, per `./doc/conventions.md`:
   stub, and `summary.md`.
 - `stakeholders/_index.md`, and for any known peers a `stakeholders/<slug>/` with `profile.md`,
   `log/`, and a `summary.md` (relationship sections per conventions).
+- `forums/_index.md`, and for any standing forums a `forums/<slug>/` with `profile.md`, `log/`,
+  and a `summary.md` (forum sections + `scope` frontmatter per conventions). Seed the leader's
+  own-staff forum and, if applicable, a boss-staff forum. If none are known yet, create just
+  `forums/_index.md` as a stub.
 - `projects/_index.md` (rows optional at first), `reports/upward/`, `prep/`.
 - A `.gitignore` posture appropriate to a private repo, and confirm to the leader this repo must
   stay private.
@@ -97,6 +103,9 @@ the available skills. This is the leader's at-a-glance guide. Include:
 - When to run each skill (after 1:1s, after meetings, weekly, on reorg).
 - The meeting-scope model, if the leader manages EMs (directly-managed vs em-led — see
   `./doc/architecture.md`); for a manager of ICs, note the single-team shape instead.
+- **Standing forums** (`./doc/architecture.md`): the leader's own staff and the boss's staff go
+  to `forums/<slug>/` via `log-meeting`, not `teams/`/`projects/`; boss-staff/cross-org forums
+  feed `prep-boss-1-1` and `weekly-report`.
 - A skills table, adapted to what's actually installed (check the installed skills directory —
   don't assume every row below is present):
 
@@ -105,7 +114,7 @@ the available skills. This is the leader's at-a-glance guide. Include:
   | **setup-management-os** | `/setup-management-os` | Once to bootstrap the repo; re-run anytime to reconcile drift. Writes your data repo's own README. |
   | **update-org** | `/update-org` | For reorg events: hires, departures, moving a person between teams, a team joining or leaving your org, adding/retiring a peer stakeholder. |
   | **log-1-1** | `/log-1-1` | After any 1:1, skip-level (if you manage managers), ad-hoc, or **peer meeting** — paste notes or a transcript. |
-  | **log-meeting** | `/log-meeting` | After a team/project meeting you attended — paste notes or a transcript. |
+  | **log-meeting** | `/log-meeting` | After a team/project meeting, or a standing forum (your staff, boss's staff), you attended — paste notes or a transcript. |
   | **refresh-summaries** | `/refresh-summaries` | To roll up person → team → org summaries (usually chained automatically). |
   | **sync-signals** | (automatic) | Helper that pulls live activity from your connected tools. |
   | **weekly-report** | `/weekly-report` | Weekly, to draft your upward report. |

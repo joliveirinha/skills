@@ -14,6 +14,8 @@ synthesize across them — you do not gather new raw data and you do not edit fi
 - `people/*/summary.md` — per-person rolling state (use sparingly; respect that these are sensitive).
 - `projects/*.md` — project status, RAG, risks.
 - `stakeholders/*/summary.md` — cross-org relationships: shared dependencies, asks, friction.
+- `forums/*/summary.md` — standing-meeting state: `own-staff` for cross-team themes/decisions/
+  risks; `boss-staff`/`cross-org` for direction from the boss and cross-org threads.
 - Optionally a signals cache written by `sync-signals`.
 
 ## What to produce

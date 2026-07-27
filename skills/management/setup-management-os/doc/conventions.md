@@ -17,9 +17,9 @@ everywhere; the individual skills don't restate it case by case.
 - People and teams use kebab-case slugs derived from the display name: `Jane Doe → jane-doe`.
 - Raw log entries: `log/YYYY-MM-DD-<type>.md`. If two entries share a date+type, append `-2`, `-3`.
 - Entry types: `1-1`, `skip` (skip-level), `adhoc`, `feedback` (person logs); `sync`, `retro`,
-  `standup`, `review`, `incident`, `project` (team/project logs). `skip` only applies when the
-  leader manages EMs/managers (i.e. their reports have their own reports); a manager of ICs
-  won't use it. See **Management span** in `architecture.md`.
+  `standup`, `review`, `incident`, `project` (team/project logs); `staff` (forum logs, default).
+  `skip` only applies when the leader manages EMs/managers (i.e. their reports have their own
+  reports); a manager of ICs won't use it. See **Management span** in `architecture.md`.
 
 ## Index files (the "database")
 
@@ -63,6 +63,19 @@ EMs; a manager of ICs has a single directly-managed team — see **Management sp
 
 (`relationship` describes how they relate to the leader — e.g. `peer` (same level, another org),
 `partner-em`, `partner-pm`, `exec-stakeholder`. Use whatever labels fit your org.)
+
+`forums/_index.md` — standing meeting series that span teams or the org (see **Standing forums**
+in `architecture.md`):
+
+```markdown
+| forum | slug | scope | chair | cadence | attendees |
+|-------|------|-------|-------|---------|-----------|
+| My Staff | my-staff | own-staff | Jane Lead (jane-lead) | bi-weekly | EMs + directly-run team |
+| Boss Staff | boss-staff | boss-staff | Big Boss (big-boss) | bi-weekly | boss + their directs |
+```
+
+(`scope` is `own-staff` | `boss-staff` | `cross-org` | `other`. `chair` is who runs it. It is not
+a team or a project; `log-meeting` routes here when the target is a forum.)
 
 ## org.md — roles, identifiers, and calibration
 
@@ -144,6 +157,23 @@ lines; it is the one part of a person summary exempt from the drop-stale rule.
 ### Stakeholder `summary.md` sections (`stakeholders/<slug>/summary.md`)
 `## Relationship state` · `## Shared projects & dependencies` · `## Open threads / asks (ours ↔ theirs)` · `## Friction & risks`
 Same `last_rolled_up` frontmatter as other summaries.
+
+### Forum `summary.md` sections (`forums/<slug>/summary.md`)
+`## Key points & direction` · `## Decisions` · `## Cross-cutting risks` · `## Follow-ups & asks`
+Frontmatter carries the usual `last_rolled_up` **plus** a `scope` field:
+
+```yaml
+---
+last_rolled_up: 2026-07-18
+scope: own-staff
+---
+```
+
+The one shape serves both directions: for `own-staff` it captures cross-team themes/decisions/
+risks; for `boss-staff`/`cross-org` "direction from the boss" lands under **Key points &
+direction** and upward/lateral requests under **Follow-ups & asks**. Forum log entries use the
+standard raw-entry shape with `type: staff` (default) and a `## Participants` block, like other
+`log-meeting` entries.
 
 ### `health.md` sections (team)
 `## Delivery` · `## Morale` · `## Staffing` · `## On-call` · `## Attrition risk`

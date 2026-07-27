@@ -1,6 +1,6 @@
 ---
 name: refresh-summaries
-description: Roll raw log entries up into rolling summaries at person, team, and org levels. Reads only entries newer than each summary's last_rolled_up marker, so it is cheap and idempotent. Called by log-1-1 for one person, and run weekly for teams and the org.
+description: Roll raw log entries up into rolling summaries at person, team, forum, and org levels. Reads only entries newer than each summary's last_rolled_up marker, so it is cheap and idempotent. Called by log-1-1 for one person, and run weekly for teams, forums, and the org.
 ---
 
 # refresh-summaries
@@ -16,8 +16,9 @@ If either is missing, stop, tell the user, and suggest running `/setup-managemen
 it yourself.
 
 ## Target
-Accept a target: a **person**, a **stakeholder**, a **team**, `org`, or `all`. Default to `all`
-if unspecified for a weekly run; `log-1-1` calls this with a single person or stakeholder.
+Accept a target: a **person**, a **stakeholder**, a **team**, a **forum**, `org`, or `all`.
+Default to `all` if unspecified for a weekly run; `log-1-1` calls this with a single person or
+stakeholder.
 
 ## Order (always bottom-up)
 1. **Person summaries** — for each in-scope person: read `people/<p>/log/` entries newer than
@@ -36,11 +37,20 @@ if unspecified for a weekly run; `log-1-1` calls this with a single person or st
    risks`, `## EM notes`) and `health.md` trend lines. Stamp the date. (The em-led input path
    applies only when the leader manages EMs — see **Management span** in `architecture.md`; a
    manager of ICs has one directly-managed team.)
-4. **Org section** — **only when the leader manages EMs/managers** (span from `org.md` `## Roles`):
-   update the org-state portion of `org.md` from the team summaries **and** stakeholder summaries:
-   the handful of things true across the org right now, the top cross-cutting risks, and cross-org
-   dependencies/friction drawn from stakeholders. For a manager of ICs there is no separate org
-   layer — stop at the single team summary, which serves as the top-level view.
+4. **Forum summaries** — for each in-scope forum: read `forums/<f>/log/` entries newer than
+   `last_rolled_up` (+ signals) and update `summary.md` (`## Key points & direction`,
+   `## Decisions`, `## Cross-cutting risks`, `## Follow-ups & asks`); keep the `scope` frontmatter.
+   Stamp the date. Flag any cross-team risk surfaced here into the affected teams' `health.md`.
+   Forums do **not** roll into person or team summaries — they feed the org / boss-facing views
+   directly (next step, and read by `prep-boss-1-1`/`weekly-report`).
+5. **Org section** — **only when the leader manages EMs/managers** (span from `org.md` `## Roles`):
+   update the org-state portion of `org.md` from the team summaries, the **forum** summaries
+   (`own-staff` for internal cross-team state; `boss-staff`/`cross-org` for direction and cross-org
+   dependencies), **and** stakeholder summaries: the handful of things true across the org right
+   now, the top cross-cutting risks, and cross-org dependencies/friction. For a manager of ICs
+   there is no separate org layer — stop at the single team summary, which serves as the top-level
+   view (a manager of ICs may still keep an `own-staff` forum; refresh it, but it has no org layer
+   above it).
 
 ## Rules
 - Only read what's new. Do not re-summarize history already reflected in a summary.
@@ -49,7 +59,7 @@ if unspecified for a weekly run; `log-1-1` calls this with a single person or st
   (dated lines, never dropped) — the drop-stale rule applies only to the current-view sections.
 - Pull enrichment via `sync-signals` for team/org levels when tools are mapped (see that skill's
   required-vs-enrichment policy). Skip cleanly if unavailable.
-- Respect scope: refreshing one person must not touch team/org files.
+- Respect scope: refreshing one person must not touch team/forum/org files.
 - Note any summary whose source data is stale or a team with no recent entries/signals.
 
 ## Finish

@@ -21,9 +21,12 @@ yourself.
 1. **Freshen the org view.** If team/org summaries are stale, run `refresh-summaries all` first.
 
 2. **Load context.** Read `org.md` (the `## Roles` block, org state, wider-org fit, boss's goals,
-   and the `## Identifiers` block), the latest `reports/upward/` report, the team summaries, and the
-   `stakeholders/*/summary.md` (cross-org relationships are often the most relevant to the boss). Run
-   `sync-signals org` for anything material that landed since the last roll-up.
+   and the `## Identifiers` block), the latest `reports/upward/` report, the team summaries, the
+   `stakeholders/*/summary.md` (cross-org relationships are often the most relevant to the boss),
+   and the **forum** summaries — especially `forums/*/summary.md` with `scope: boss-staff` or
+   `cross-org` (direction the boss has already set and cross-org threads), plus the `own-staff`
+   forum for internal cross-team status. Run `sync-signals org` for anything material that landed
+   since the last roll-up.
 
 3. **Pull self + boss activity.** Run `sync-signals self` and `sync-signals boss` (handles from
    `org.md`) to see what the leader has been working on recently (wiki pages, notable chat) and

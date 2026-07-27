@@ -93,6 +93,30 @@ has just one directly-managed team — the EM-led branch below simply doesn't ap
 Each team's `_index.md` row records its management mode (`directly-managed` | `em-led`) so the
 skills know where to look.
 
+## Standing forums (meetings that aren't a team or a project)
+
+Some recurring meetings the leader attends span multiple teams or reach outside the org, so they
+don't belong to any single `team` or `project`. These are **forums** (`forums/<slug>/`), a
+first-class entity with the same log + rolling-summary shape as everything else. Each forum's
+`_index.md` row records a **scope**:
+
+- **`own-staff`** — the leader's own staff / leadership meeting (the leader + their EMs + any
+  directly-run team). Content is cross-team: org-level themes, decisions, and risks that span
+  teams. `log-meeting` routes it to `forums/<slug>/log/`; its summary is an input to the **org**
+  view and to `org-analyst`. Cross-team risks raised here are still flagged into the affected
+  `teams/<t>/health.md`.
+- **`boss-staff`** — the leader's manager's staff meeting (the boss + the leader's peers). The
+  leader attends, so it is logged here even though it sits *above* them — a deliberate exception
+  to "only log what you attend/own." Its summary feeds the **boss** context: `prep-boss-1-1` and
+  `weekly-report` read `boss-staff` (and `cross-org`) forum summaries.
+- **`cross-org`** — standing councils / syncs with other orgs. Treated like `boss-staff` for
+  read purposes (surfaces cross-org dependencies upward).
+- **`other`** — any standing forum that doesn't fit the above.
+
+Forums roll up on the same `last_rolled_up` cadence as everything else: only entries newer than
+the marker are folded in. A forum does **not** roll into person or team summaries; it feeds the
+org / boss-facing views directly.
+
 ## Peers & cross-org stakeholders
 
 Not everyone the leader meets reports to them. Fellow directors, partner EMs, and PMs in other
