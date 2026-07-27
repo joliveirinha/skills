@@ -160,23 +160,26 @@ not optional, so this step isn't skippable.
    `false`) — then write the unchanged body to `<chosen-dir>/agent/org-analyst.md` (or `agents/`,
    matching whichever the target OpenCode config already uses).
 
-The OpenCode target(s) chosen here are also what Step 10 uses, so the leader is asked which
-tool(s) to install for only once.
+Whether OpenCode was chosen as a target here also decides whether Step 10 runs, so the leader is
+asked which tool(s) to install for only once. (Step 10's command files always go in the data
+repo's own `.opencode/command/`, independent of where this subagent is installed.)
 
 ## Step 10 — Generate OpenCode slash commands (OpenCode targets only)
 
-**Run this only if OpenCode was chosen as an install target in Step 9**, and reuse that same
-chosen dir. Skip it entirely for Claude-only installs: in Claude Code these skills already appear
-as `/name` commands (that's what `disable-model-invocation: true` does). OpenCode is different —
-it ignores `disable-model-invocation` and has **no user-facing `/skill-name` invocation**; skills
-are reachable there only through the `skill` tool. So the README's `/log-1-1`, `/weekly-report`,
-etc. do nothing for an OpenCode user until backed by a command file. These wrappers add the
-**user** entrypoint; they don't restrict the model, which can still invoke any skill via the
-`skill` tool. As with the subagent, `npx skills` installs skills only — so generate these here.
+**Run this only if OpenCode was chosen as an install target in Step 9.** Skip it entirely for
+Claude-only installs: in Claude Code these skills already appear as `/name` commands (that's what
+`disable-model-invocation: true` does). OpenCode is different — it ignores
+`disable-model-invocation` and has **no user-facing `/skill-name` invocation**; skills are
+reachable there only through the `skill` tool. So the README's `/log-1-1`, `/weekly-report`, etc.
+do nothing for an OpenCode user until backed by a command file. These wrappers add the **user**
+entrypoint; they don't restrict the model, which can still invoke any skill via the `skill` tool.
+As with the subagent, `npx skills` installs skills only — so generate these here.
 
-1. Resolve the command subfolder under the chosen OpenCode config dir: match whichever of
-   `command/` / `commands/` that config already uses; if both exist prefer `command/`; if neither,
-   create `command/`. (Both are read by OpenCode, same as `agent/` vs `agents/` in Step 9.)
+1. **Generate into the data repo, project-scoped:** write the wrappers to the data repo's own
+   `.opencode/command/` (create it if absent), **not** the global OpenCode config dir. These
+   commands only make sense inside this repo, so scoping them here keeps them out of every other
+   project. (Use `command/`; both `command/` and `commands/` are read by OpenCode, but prefer
+   `command/`.) Note this is independent of where the Step 9 subagent was installed.
 2. Generate one file per skill for **every skill the README lists with a slash — all except
    `sync-signals`** (which is automatic): `setup-management-os`, `update-org`, `log-1-1`,
    `log-meeting`, `refresh-summaries`, `weekly-report`, `prep-ic-1-1`, `prep-em-1-1`,
@@ -186,9 +189,14 @@ etc. do nothing for an OpenCode user until backed by a command file. These wrapp
      Leave `agent`/`model` unset (default current agent — these skills read/write the data repo).
    - A template body telling the agent to load and run that skill via the `skill` tool, e.g.
      `Load and run the log-1-1 skill.`
-   - For the three arg-taking prep skills — `prep-ic-1-1 <name>`, `prep-peer-1-1 <name>`,
-     `prep-em-1-1 <em-or-team>` — reference `$ARGUMENTS` in the template (e.g.
-     `Load and run the prep-ic-1-1 skill for: $ARGUMENTS`). The rest take no arguments.
+   - **Reference `$ARGUMENTS` in the template for every skill that takes free input or a target**,
+     because OpenCode *substitutes* `$ARGUMENTS` and does **not** append typed args when the
+     placeholder is absent — omit it and the user's input is silently dropped. That means:
+     - `log-1-1`, `log-meeting` — the pasted notes/transcript (e.g.
+       `Load and run the log-1-1 skill for the conversation: $ARGUMENTS`).
+     - `update-org` — the change to apply; `refresh-summaries` — the optional target.
+     - `prep-ic-1-1 <name>`, `prep-peer-1-1 <name>`, `prep-em-1-1 <em-or-team>` — the subject.
+     - No arguments: `setup-management-os`, `weekly-report`, `prep-boss-1-1`.
 3. These are regenerable artifacts (like the reference docs and the subagent), so it's safe to
    refresh them; in reconcile mode offer to (re)generate missing or stale ones rather than
    clobbering silently.
