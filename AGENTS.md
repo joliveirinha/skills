@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Guidance for AI agents working in this repository. (`CLAUDE.md` points here.)
+Guidance for AI agents working in this repository.
 
 ## What this repo is
 
-A collection of **Claude Code skills**, published for installation via
+A collection of **agent skills**, published for installation via
 [`npx skills`](https://skills.sh) (the `vercel-labs/skills` CLI). There is **no build,
 lint, or test step** — the deliverable is Markdown: `SKILL.md` files. "Testing" means
 confirming the CLI discovers and lists the skills correctly.
@@ -113,8 +113,16 @@ category that needs a subagent should follow the same pattern: bundle it inside 
 own setup skill, don't add a category-level `.agents/` sibling folder (see the discovery rule
 above for why that wouldn't get installed).
 
+The same runtime-generation approach covers **OpenCode slash commands**. Claude Code turns a
+skill with `disable-model-invocation: true` into a user `/skill-name` command automatically;
+OpenCode ignores that field and has no user-facing skill slash-invocation at all (skills there are
+reachable only via the `skill` tool). So `setup-management-os` Step 10 generates thin
+`command/<skill>.md` wrapper files — one per user-invoked skill, all except `sync-signals` — into
+the chosen OpenCode config dir, reusing the Step 9 tool-target choice and skipping Claude-only
+installs. Like the subagent, `npx skills` won't install these, so the skill writes them itself at
+runtime using ordinary Read/Write.
+
 ## Git
 
 Default branch `main`, remote `origin` = `git@github.com:joliveirinha/skills.git`. Commit/push
-only when asked. End commit messages with:
-`Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+only when asked.

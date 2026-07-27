@@ -20,7 +20,7 @@ generating them, while keeping capture (which needs human notes) manual.
 
 ## Mechanism options (to decide next iteration)
 
-- **Cron** (e.g. Claude Code scheduled runs / a system cron invoking the CLI headless). Simple,
+- **Cron** (e.g. an agent's scheduled runs / a system cron invoking the CLI headless). Simple,
   but needs the environment + MCP auth available unattended.
 - **Pre-meeting hook** — a git hook or calendar-triggered run that fires the matching `prep-*`
   skill shortly before a meeting. Keeps everything on-demand-ish but removes the "remember to

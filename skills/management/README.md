@@ -1,6 +1,6 @@
 # Management OS
 
-A set of [Claude Code](https://claude.com/claude-code) skills that give an engineering
+A set of agent skills that give an engineering
 leader a durable, git-backed "management operating system": a raw log of every interaction
 plus **rolling summaries** — at **person → team → org** levels for a leader who manages
 managers, collapsing to **person → team** for a first-line manager of ICs — so that before any
@@ -43,7 +43,7 @@ management repo**, bootstrap the structure:
 This one skill does everything: scaffolds the `people`/`teams`/`projects` tree, seeds this
 category's reference docs into your repo at `docs/agents/architecture.md` and `conventions.md`,
 adds a `## Management OS` section to whichever of your `AGENTS.md`/`CLAUDE.md` already exists, and
-installs the `org-analyst` subagent (asking which of Claude Code / OpenCode to install it for) —
+installs the `org-analyst` subagent (asking which agent(s) to install it for) —
 `weekly-report` and `prep-boss-1-1` depend on it, so it isn't optional. It's safe to re-run any
 time; it detects drift and asks before fixing anything.
 
@@ -62,6 +62,10 @@ time; it detects drift and asks before fixing anything.
 | **prep-em-1-1** | `/prep-em-1-1 <em-or-team>` | Before a 1:1 with an engineering manager (if you manage EMs). |
 | **prep-peer-1-1** | `/prep-peer-1-1 <name>` | Before a meeting with a peer / cross-org stakeholder. |
 | **prep-boss-1-1** | `/prep-boss-1-1` | Before a 1:1 with your manager. |
+
+> How you invoke these depends on your agent — some expose skills as `/` commands directly,
+> others need small wrapper command files. `setup-management-os` wires up the right invocation for
+> your agent when it runs; the agent can also load any skill directly.
 
 ## How it fits together
 

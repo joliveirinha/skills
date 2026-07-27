@@ -1,6 +1,6 @@
 # João Oliveirinha skills
 
-A personal collection of [Claude Code](https://claude.com/claude-code) skills, installable
+A personal collection of agent skills, installable
 via [`npx skills`](https://skills.sh). Skills are grouped into **categories** under
 `skills/<category>/`, and each category is self-contained — it ships its own README and any
 skills it needs.

@@ -17,18 +17,21 @@ files, so every file matches the expected shape.
 
 Check for `org.md`, `people/_index.md`, `teams/_index.md`, `projects/_index.md`, `settings.md`,
 `docs/agents/architecture.md`, `docs/agents/conventions.md`, an `## Management OS` section in
-whichever of `AGENTS.md`/`CLAUDE.md` exists, and whether the `org-analyst` subagent is installed
+whichever of `AGENTS.md`/`CLAUDE.md` exists, whether the `org-analyst` subagent is installed
 (check for `agents/org-analyst.md` under `.claude/`, `~/.claude/`, `.opencode/`, and
-`~/.config/opencode/`).
+`~/.config/opencode/`), and — for any OpenCode install target — whether the per-skill
+`command/<skill>.md` wrappers exist (see Step 10).
 
 - **Nothing present** → first-time bootstrap (Step 2 onward).
 - **Present** → reconcile mode: report what conforms, what's missing, and what's drifted
   (e.g. a team folder with no `_index.md` row, a summary missing `last_rolled_up`, `docs/agents/*.md`
   older than the version bundled with this skill, the `## Management OS` section missing or stale,
-  `org-analyst` not installed anywhere). **Present this as a list and ask before changing anything**
+  `org-analyst` not installed anywhere, an OpenCode target missing or with stale
+  `command/<skill>.md` wrappers). **Present this as a list and ask before changing anything**
   — never apply fixes silently. Apply only the changes the leader confirms. **Never delete or
   overwrite existing `log/` entries or summaries** — the reference docs, the AGENTS.md/CLAUDE.md
-  section, and the subagent file are safe to refresh freely since they're generated, not user data.
+  section, the subagent file, and the OpenCode command wrappers are safe to refresh freely since
+  they're generated, not user data.
   End with an "already conformant" note if nothing needed changing.
 
 ## Step 2 — Write settings.md (tools)
@@ -111,6 +114,10 @@ the available skills. This is the leader's at-a-glance guide. Include:
   | **prep-peer-1-1** | `/prep-peer-1-1 <name>` | Before a meeting with a peer / cross-org stakeholder. |
   | **prep-boss-1-1** | `/prep-boss-1-1` | Before a 1:1 with your manager. |
 
+  Add a one-line note beneath the table: on Claude Code these `/` commands work natively; on
+  OpenCode they're backed by wrapper command files that `setup-management-os` generates (Step 10),
+  and the agent can also invoke any skill directly via the skill tool.
+
 ## Step 7 — Seed the reference docs
 
 Copy `./doc/architecture.md` and `./doc/conventions.md` (bundled with this skill) into the data
@@ -143,6 +150,39 @@ not optional, so this step isn't skippable.
    `true`, every other tool — `write`, `edit`, `bash`, `read`, `grep`, `glob`, `webfetch` — set to
    `false`) — then write the unchanged body to `<chosen-dir>/agent/org-analyst.md` (or `agents/`,
    matching whichever the target OpenCode config already uses).
+
+The OpenCode target(s) chosen here are also what Step 10 uses, so the leader is asked which
+tool(s) to install for only once.
+
+## Step 10 — Generate OpenCode slash commands (OpenCode targets only)
+
+**Run this only if OpenCode was chosen as an install target in Step 9**, and reuse that same
+chosen dir. Skip it entirely for Claude-only installs: in Claude Code these skills already appear
+as `/name` commands (that's what `disable-model-invocation: true` does). OpenCode is different —
+it ignores `disable-model-invocation` and has **no user-facing `/skill-name` invocation**; skills
+are reachable there only through the `skill` tool. So the README's `/log-1-1`, `/weekly-report`,
+etc. do nothing for an OpenCode user until backed by a command file. These wrappers add the
+**user** entrypoint; they don't restrict the model, which can still invoke any skill via the
+`skill` tool. As with the subagent, `npx skills` installs skills only — so generate these here.
+
+1. Resolve the command subfolder under the chosen OpenCode config dir: match whichever of
+   `command/` / `commands/` that config already uses; if both exist prefer `command/`; if neither,
+   create `command/`. (Both are read by OpenCode, same as `agent/` vs `agents/` in Step 9.)
+2. Generate one file per skill for **every skill the README lists with a slash — all except
+   `sync-signals`** (which is automatic): `setup-management-os`, `update-org`, `log-1-1`,
+   `log-meeting`, `refresh-summaries`, `weekly-report`, `prep-ic-1-1`, `prep-em-1-1`,
+   `prep-peer-1-1`, `prep-boss-1-1`. Each `command/<skill>.md` is a thin wrapper, generated inline
+   (these are formulaic — nothing needs to ship in this skill's folder):
+   - Frontmatter with a short `description:` condensed from that skill's README "Use it…" text.
+     Leave `agent`/`model` unset (default current agent — these skills read/write the data repo).
+   - A template body telling the agent to load and run that skill via the `skill` tool, e.g.
+     `Load and run the log-1-1 skill.`
+   - For the three arg-taking prep skills — `prep-ic-1-1 <name>`, `prep-peer-1-1 <name>`,
+     `prep-em-1-1 <em-or-team>` — reference `$ARGUMENTS` in the template (e.g.
+     `Load and run the prep-ic-1-1 skill for: $ARGUMENTS`). The rest take no arguments.
+3. These are regenerable artifacts (like the reference docs and the subagent), so it's safe to
+   refresh them; in reconcile mode offer to (re)generate missing or stale ones rather than
+   clobbering silently.
 
 ## Finish
 
